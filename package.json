@@ -1,0 +1,28 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio to showcase all my projects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasArthurMella/portfolio.git"
+  },
+  "author": "Lucas Mella",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LucasArthurMella/portfolio/issues"
+  },
+  "homepage": "https://github.com/LucasArthurMella/portfolio#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.9",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
