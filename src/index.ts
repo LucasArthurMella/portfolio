@@ -1,9 +1,18 @@
+import { getEnv } from "./constants/envs";
 import server from "./server";
+import dotenv from "dotenv";
 
 function main(){
+
+  dotenv.config({path: ".env"});
+  let env = getEnv();
+  console.log("env" + process.env.MONGO_URI);
+
   try {
-    server.listen(3000, () => {
+    server.listen(env.server.port, () => {
       console.log("Connection to express server sucessfull!");
+      console.log("Running on: ",env.server.host,":",env.server.port);
+      console.log("Mongo Uri: ", env.mongoUri);
     })
   }catch(e){
       console.log("Connection to express server failed!");

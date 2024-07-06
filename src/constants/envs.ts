@@ -1,0 +1,10 @@
+
+export const getEnv = () => {
+  return {
+    server: {
+      host: process.env.HOST!,
+      port: parseInt(process.env.PORT!)
+    },
+    mongoUri: process.env.MONGO_URI!,
+  }
+}
