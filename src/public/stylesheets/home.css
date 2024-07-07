@@ -1,0 +1,98 @@
+.main-nav-container {
+  height: 70px; 
+  background-color: #023436;
+  display: flex;
+  justify-content: right;
+  padding-right: 10%;
+  position: sticky;
+}
+
+.main-nav {
+  padding-top: 20px;
+}
+
+.main-nav a {
+  color: #00bfb3;
+  text-decoration: none;
+  font-size: 25px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.main-nav a:hover {
+  transition:color 0.3s;
+  color: #39FF14;
+}
+
+.top-box {
+  margin-top: 6%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: 10px inset #049a8f;
+  border-radius: 30px;
+  background-color: #023436; 
+  min-height: 500px;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.top-box #top-box-first {
+  padding-left: 30px;
+  padding-top: 30px;
+}
+
+.top-box #top-box-first h2 {
+  padding-top: 20px;
+  margin-bottom: 0px;
+  font-size: 30px;
+}
+
+.top-box #top-box-first h1 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 420%;
+}
+
+.top-box #top-box-first div {
+  display: start;
+  justify-content: center;
+  padding: 50px 0px 50px 12%;
+}
+
+.top-box #top-box-first div img {
+  max-width: 300px;
+  border-radius: 50%;
+box-shadow: rgba(0,191,179, 0.4) 0px 0px 25px , rgba(0,191,179, 0.3)  0px 0px 30px, rgba(0,191,179, 0.2) 0px 0px 35px, rgba(0,191,179, 0.1) 0px 0px 40px, rgba(0,191,179, 0.05) 0px 0px 45px;
+}
+
+.top-box div:nth-of-type(2) {
+  font-size: 172%;
+  padding-top: 5%;
+  padding-right: 50px;
+}
+
+
+
+@media (max-width: 768px){
+  .main-nav a {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px){
+
+}
+
+
+@media (max-width: 1200px){
+
+
+}
+
+
+
+
+
+
