@@ -39,23 +39,35 @@
 /*MAIN NAVBAR END*/
 /*==============*/
 
+/*=====================*/
+/*MAIN CONTAINER BEGIN*/
+/*===================*/
 
-/*==============*/
-/*TOP BOX BEGIN*/
-/*============*/
-.top-box {
-  text-shadow: 5px 5px 9px #037971;
-  margin-top: 2%;
+#main-container {
   margin-left: 10%;
   margin-right: 10%;
   border-radius: 30px;
   background: rgb(5,80,83);
   background: linear-gradient(90deg, rgba(5,80,83,1) 0%, rgba(2,52,54,1) 30%, rgba(5,80,83,1) 100%);
   min-height: 500px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding-bottom: 2%;
+}
+
+/*===================*/
+/*MAIN CONTAINER END*/
+/*=================*/
+
+/*==============*/
+/*TOP BOX BEGIN*/
+/*============*/
+.top-box {
+  text-shadow: 5px 5px 9px #037971;
   color: white;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 #top-box-first {
@@ -115,7 +127,62 @@
 /*==========*/
 
 
+/*================*/
+/*SKILL BOX BEGIN*/
+/*==============*/
+
+#skill-box-title {
+  margin-top: 150px;
+  text-align: center;
+  font-size: 420%;
+  text-shadow: 12px 12px 1px #037971;
+  color: white;
+}
+
+#skill-box-container {
+  margin-left: 12%;
+  margin-right: 12%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 70px;
+}
+
+#skill-box-container-flex {
+  display: flex;
+  justify-content: center;
+}
+
+
+.skill-box {
+  width: 170px;
+  height: 170px; 
+  background: rgb(0,61,50);
+  background: linear-gradient(90deg, rgba(0,61,50,1) 0%, rgba(0,255,207,1) 50%, rgba(0,61,50,1) 100%);
+  border-radius: 30%;
+}
+
+
+/*================*/
+/*SKILL BOX END*/
+/*==============*/
+
+
+
 @media (max-width: 1200px){
+
+/*=====================*/
+/*MAIN CONTAINER BEGIN*/
+/*===================*/
+
+#main-container {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+/*===================*/
+/*MAIN CONTAINER END*/
+/*=================*/
+
 /*==============*/
 /*TOP BOX BEGIN*/
 /*============*/
@@ -135,7 +202,23 @@
 /*============*/
 /*TOP BOX END*/
 /*==========*/
+
+
+/*================*/
+/*SKILL BOX BEGIN*/
+/*==============*/
+
+
+#skill-box-container {
+  grid-template-columns: 1fr 1fr 1fr;
 }
+
+/*================*/
+/*SKILL BOX END*/
+/*==============*/
+}
+
+
 
 @media (max-width: 1024px){
 /*==============*/
@@ -188,7 +271,25 @@
 /*============*/
 /*TOP BOX END*/
 /*==========*/
+
+
+/*================*/
+/*SKILL BOX BEGIN*/
+/*==============*/
+
+#skill-box-title {
+  font-size: 320%;
 }
+
+
+/*==============*/
+/*SKILL BOX END*/
+/*============*/
+
+}
+
+
+
 
 @media (max-width: 768px){
 
@@ -221,6 +322,30 @@
 /*============*/
 /*TOP BOX END*/
 /*==========*/
+
+/*================*/
+/*SKILL BOX BEGIN*/
+/*==============*/
+
+#skill-box-title {
+  font-size: 170%;
+}
+
+#skill-box-container {
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.skill-box {
+  width: 150px;
+  height: 150px;
+}
+
+/*================*/
+/*SKILL BOX END*/
+/*==============*/
+
+
 }
 
 
