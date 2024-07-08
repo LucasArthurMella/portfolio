@@ -1,10 +1,40 @@
 body {
-  background-color: #037971;
-  margin: 0px;
-  font-family: "Outfit", sans-serif;
+  /*background-color: #037971;*/
+  background: rgb(3,121,113);
+background: linear-gradient(90deg, rgba(3,121,113,1) 0%, rgba(6,159,149,1) 50%, rgba(3,121,113,1) 100%); 
+margin: 0px;
+  font-family: "Libre Franklin", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
+.main-button {
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(45deg, #00bfb3 0%, #016a6e  51%, #03b5aa  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
 
+.main-button:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
 
+.main-button:active {
+  transform: scale(0.95);
+}
