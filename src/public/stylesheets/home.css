@@ -134,7 +134,7 @@
 #skill-box-title {
   margin-top: 150px;
   text-align: center;
-  font-size: 420%;
+  font-size: 350%;
   text-shadow: 12px 12px 1px #037971;
   color: white;
 }
@@ -156,14 +156,51 @@
 .skill-box {
   width: 170px;
   height: 170px; 
-  background: rgb(0,61,50);
-  background: linear-gradient(90deg, rgba(0,61,50,1) 0%, rgba(0,255,207,1) 50%, rgba(0,61,50,1) 100%);
+  background: rgb(1,13,14);
+  background: linear-gradient(90deg, rgba(1,13,14,1) 0%, rgba(2,32,33,1) 35%, rgba(1,13,14,1) 100%); 
   border-radius: 30%;
+}
+
+.skill-box-flex {
+  display: flex;
+  justify-content: center;
+}
+
+.skill-box img {
+  padding-top: 20px;
+  max-width: 80px; 
+}
+
+.skill-box p {
+  text-align: center;
+  font-family: "Libre Franklin", sans-serif;
+  text-shadow: 5px 5px 9px #037971;
+  color: white;
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-weight: 500;
 }
 
 
 /*================*/
 /*SKILL BOX END*/
+/*==============*/
+
+/*==================*/
+/*PROJECT BOX START*/
+/*================*/
+
+#project-box-title {
+  margin-top: 150px;
+  text-align: center;
+  font-size: 350%;
+  text-shadow: 12px 12px 1px #037971;
+  color: white;
+}
+
+/*================*/
+/*PROJECT BOX END*/
 /*==============*/
 
 
@@ -339,6 +376,10 @@
 .skill-box {
   width: 150px;
   height: 150px;
+}
+
+.skill-box p {
+  font-size: 20px;
 }
 
 /*================*/
