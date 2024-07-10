@@ -2,22 +2,25 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <link href="stylesheets/global.css" rel="stylesheet">
     <link href="stylesheets/home.css" rel="stylesheet">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
-</style>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
   </head>
   <body>
     <div class="main-nav-container">
-      <div class="main-nav">
-        <a href="#home">Sobre</a>
-        <a href="#about">Habilidades</a>
-        <a href="#services">Projetos</a>
+      <div class="main-nav selectable-text">
+        <a href="#about">Sobre</a>
+        <a href="#skills">Habilidades</a>
+        <a href="#project-box">Projetos</a>
         <a href="#contact">Contato</a>
       </div>
     </div>
     <div id="main-container">
+      <div id="about"></div>
       <div class="top-box">
         <div id="top-box-first">
           <div>
@@ -48,6 +51,8 @@
           </div>
         </div>
       </div>
+
+      <div id="skills"></div>
 
       <div id="skill-box-title">
         <h1>Principais Tecnologias</h1> 
@@ -85,12 +90,99 @@
       </div>
       
       <div id="project-box-title">
-        <h1>Projetos</h1> 
+        <h1>Principais Projetos</h1> 
       </div>
 
+      <div id="project-box-container-flex">
+        <div id="project-box-container">
+
+        <div class="project-box">
+          <div class="selectable-text project-box-project-title">
+            <a href="" >Agroloc</a>
+          </div>
+          <div class="project-box-images">
+            <div>
+              <img src="pictures/dynamic/ex1.png">
+            </div>
+
+            <div>
+              <img src="pictures/dynamic/ex2.png">
+            </div>
+
+            <div>
+              <img src="pictures/dynamic/ex3.png">
+            </div>
+          </div>
+        </div> 
 
 
+        <div class="project-box">
+          <div class="selectable-text project-box-project-title">
+            <a href="" >Projeto 2</a>
+          </div>
+          <div class="project-box-images">
+            <div>
+              <img src="pictures/dynamic/ex1.png">
+            </div>
+
+            <div>
+              <img src="pictures/dynamic/ex2.png">
+            </div>
+
+            <div>
+              <img src="pictures/dynamic/ex3.png">
+            </div>
+          </div>
+        </div> 
+
+
+        <div class="project-box">
+          <div class="selectable-text project-box-project-title">
+            <a href="" >Projeto 3</a>
+          </div>
+          <div class="project-box-images">
+            <div>
+              <img src="pictures/dynamic/ex1.png">
+            </div>
+
+            <div>
+              <img src="pictures/dynamic/ex2.png">
+            </div>
+
+            <div>
+              <img src="pictures/dynamic/ex3.png">
+            </div>
+          </div>
+        </div> 
+
+
+        <div class="project-box">
+          <div class="selectable-text project-box-project-title">
+            <a href="" >Projeto 4</a>
+          </div>
+          <div class="project-box-images">
+            <div>
+              <img src="pictures/dynamic/ex1.png">
+            </div>
+
+            <div>
+              <img src="pictures/dynamic/ex2.png">
+            </div>
+
+            <div>
+              <img src="pictures/dynamic/ex3.png">
+            </div>
+          </div>
+        </div> 
+
+        </div> 
+      </div>
     </div>
-    <script src="https://kit.fontawesome.com/e269f9ec62.js" crossorigin="anonymous"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>var exports = {};</script>
+    <script src="home-test.js"></script>
   </body>
 </html>

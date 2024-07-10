@@ -4,8 +4,7 @@
   "description": "Portfolio to showcase all my projects.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.ts"
+    "start": "tsc-watch --project . --onSuccess \"nodemon src/index.ts\""
   },
   "repository": {
     "type": "git",
@@ -19,17 +18,26 @@
   "homepage": "https://github.com/LucasArthurMella/portfolio#readme",
   "devDependencies": {
     "@types/express": "^4.17.21",
+    "@types/jquery": "^3.5.30",
     "@types/node": "^20.14.10",
+    "express": "^4.19.2",
+    "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.5.3"
+    "tsc-watch": "^6.2.0",
+    "typescript": "^5.5.3",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
     "@types/ejs": "^3.1.5",
+    "@types/slick-carousel": "^1.6.40",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
-    "express": "^4.19.2",
-    "mongoose": "^8.4.5"
+    "jquery": "^3.7.1",
+    "mongoose": "^8.4.5",
+    "slick-carousel": "^1.8.1"
   }
 }
