@@ -63,6 +63,7 @@
 
       <div id="skill-box-container-flex">
         <div id="skill-box-container">
+
           <div class="skill-box"> 
             <div class="skill-box-flex">
               <div>
@@ -71,6 +72,7 @@
             </div>
             <p>NodeJS</p>
           </div>
+
           <div class="skill-box"> 
             <div class="skill-box-flex">
               <div>
@@ -79,6 +81,7 @@
             </div>
             <p>TypeScript</p>
           </div>
+
           <div class="skill-box"> 
             <div class="skill-box-flex">
               <div>
@@ -87,8 +90,16 @@
             </div>
             <p>MongoDB</p>
           </div>
-          <div class="skill-box"> </div>
-          <div class="skill-box"> </div>
+
+          <div class="skill-box"> 
+            <div class="skill-box-flex">
+              <div>
+                <img src="pictures/static/logos/rust-logo-512x512.png" alt="">
+              </div>
+            </div>
+            <p>Rust</p>
+          </div>
+
         </div>
       </div>
      
@@ -266,10 +277,7 @@
         </div>
       </div>
 
-
-
-
-       <div id="contact-box-second-container" style="width: 100%; ">
+       <div id="contact-box-second-container">
 
         <div class="justify-center">
           <div id="contact-box-second-container-title-div">
@@ -279,13 +287,45 @@
           </div>
         </div> 
 
+      <div id="contact-box-second-form-container">
 
+        <form id="contact-box-second-form" class="form-box">
+          
+          <div class="form-container">
 
+            <div class="input-group">
 
+              <div class="input-container">
+                <label class="input-label" for="stm_name"><i class="fa fa-solid fa-user"></i> Nome</label> 
+                <input class="input" type="text" name="name" id="stm_name" required="true">
+              </div>
 
+              <div class="input-container">
+                <label class="input-label" for="stm_email"><i class="fa fa-solid fa-at"></i> Email</label> 
+                <input class="input" type="email" name="email" id="stm_email" required="true">
+              </div>
 
+              <div class="input-container">
+                <label class="input-label" for="stm_subject"><i class="fa fa-solid fa-envelope-open-text"></i> Assunto</label> 
+                <input class="input" type="text" name="subject" id="stm_subject" required="true">
+              </div>
 
+              <div class="input-container">
+                <label class="input-label" for="stm_message"><i class="fa fa-solid fa-comment"></i> Mensagem</label> 
+                <textarea class="input textarea" name="message" id="stm_message" required="true"></textarea>
+              </div>
 
+            </div>
+
+            
+            <div class="input-group justify-center">
+              <button class="main-button" >Enviar</button>
+            </div>
+          </div>
+                        
+
+        </form>
+        </div>
        </div> 
       </div> 
     </div>
@@ -294,6 +334,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>var exports = {};</script>
-    <script src="home-test.js"></script>
+    <script src="home.js"></script>
   </body>
 </html>
