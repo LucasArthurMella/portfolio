@@ -19,9 +19,52 @@
 
 .selectable-text a:hover {
   color: #023436;
-  box-shadow: inset 200px 0 0 0 #00bfb3;
+  box-shadow: inset 400px 0 0 0 #00bfb3;
   text-shadow: none;
   border-radius: 20px; 
+}
+
+.selectable-box {
+  box-shadow: inset 0 0 0 0 #54b3d6;
+  color: #00bfb3;
+  text-decoration: none;
+  font-size: 25px;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out, text-shadow .3s ease-in-out, border-radius .3s ease-in-out;
+  border-radius: 20px;
+}
+
+
+.selectable-box:hover {
+  color: #023436;
+  box-shadow: inset 400px 0 0 0 #00bfb3;
+  text-shadow: none;
+  border-radius: 20px; 
+}
+
+
+.title-shadow {
+  color: white;
+  text-shadow: 5px 5px 9px #037971;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.shiny-image {
+  max-width: 300px;
+  border-radius: 50%;
+  box-shadow: rgba(0,191,179, 0.4) 0px 0px 25px , rgba(0,191,179, 0.3)  0px 0px 30px, rgba(0,191,179, 0.2) 0px 0px 35px, rgba(0,191,179, 0.1) 0px 0px 40px, rgba(0,191,179, 0.05) 0px 0px 45px;
 }
 
 /*==================*/
@@ -153,6 +196,8 @@
   color: white;
 }
 
+
+
 #skill-box-container {
   margin-left: 12%;
   margin-right: 12%;
@@ -228,6 +273,7 @@
 #project-box-container-flex {
   display: flex;
   justify-content: center;
+  padding-bottom: 120px;
 }
 
 .project-box {
@@ -256,8 +302,121 @@
   border-radius: 0px 0px 10px 10px;
 }
 
+#project-button-container-flex {
+  display: flex;
+  justify-content: center;
+}
+
+#project-button {
+  font-size: 30px;
+  margin: 0px;
+}
+
+#project-github-button{
+  font-size: 30px;
+  margin: 0px;
+  margin-left: 10px;
+  padding: 15px;
+}
+
+#project-github-button a {
+  color: inherit;  
+  text-decoration: none;
+}
+
 /*================*/
 /*PROJECT BOX END*/
+/*==============*/
+
+
+
+/*================*/
+/*CONTACT BOX START*/
+/*==============*/
+
+#contact-box-title {
+  margin-top: 150px;
+  text-align: center;
+  font-size: 350%;
+  text-shadow: 12px 12px 1px #037971;
+  color: white;
+}
+
+#contact-box-title h1 {
+  margin-bottom: 0px;
+}
+
+#contact-box-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#contact-box-first-container-title-div {
+  font-size: 30px;
+}
+
+
+#contact-box-first-container-title-div h1 {
+  margin-bottom: 0px;
+}
+
+#contact-box-first-container-flex{
+  /*display: grid;*/
+  /*grid-template-columns: 1fr 1fr;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#contact-box-first-image {
+  padding: 30px 0px 20px 0px;
+}
+
+#contact-box-first-image .shiny-image {
+  height: 100%;
+}
+
+.contact-box{ 
+  padding-left: 30px;
+  width: 368px;
+  height: 100%; 
+  background: rgb(1,13,14);
+  background: linear-gradient(90deg, rgba(1,13,14,1) 0%, rgba(2,32,33,1) 35%, rgba(1,13,14,1) 100%); 
+  border-radius: 10px;
+  margin-top: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.contact-box-anchor {
+  font-size: 23px;
+  height: 20%;
+  /*height: 80px;*/
+  width: 100%;
+  margin-top: 15px;
+}
+
+.contact-box i {
+  color: #00bfb3
+}
+
+.contact-box-box-title {
+  color: white;
+}
+
+
+
+#contact-box-second-container-title-div {
+  font-size: 30px;
+}
+
+
+#contact-box-second-container-title-div h1 {
+  margin-bottom: 0px;
+}
+
+/*================*/
+/*CONTACT BOX END*/
 /*==============*/
 
 @media (max-width: 1700px){
@@ -407,12 +566,25 @@
 
 
 
+
 /*================*/
 /*PROJECT BOX END*/
 /*==============*/
 
 
+/*================*/
+/*CONTACT BOX START*/
+/*==============*/
 
+
+#contact-box-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/*================*/
+/*CONTACT BOX END*/
+/*==============*/
 
 }
 
@@ -480,8 +652,15 @@
 
 
 /*================*/
-/*PROJECT BOX END*/
+/*PROJECT BOX START*/
 /*==============*/
+
+
+#project-button-container-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 #project-box-title {
   font-size: 170%;
@@ -497,9 +676,46 @@
   height: 135px; 
 }
 
+#project-button {
+  font-size: 18px;
+}
+
+#project-github-button {
+  margin-top: 40px;
+  font-size: 18px;
+}
+
 /*================*/
 /*PROJECT BOX END*/
 /*==============*/
+
+/*================*/
+/*CONTACT BOX START*/
+/*==============*/
+
+
+#contact-box-title {
+  font-size: 200%;
+}
+
+#contact-box-first-container-title-div {
+  font-size: 20px;
+}
+
+.contact-box {
+  width: 280px;
+}
+
+.contact-box-anchor {
+  font-size: 18px;
+}
+
+
+
+/*================*/
+/*CONTACT BOX END*/
+/*==============*/
+
 
 }
 
