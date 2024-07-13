@@ -297,22 +297,22 @@
 
               <div class="input-container">
                 <label class="input-label" for="stm_name"><i class="fa fa-solid fa-user"></i> Nome</label> 
-                <input class="input" type="text" name="name" id="stm_name" required="true">
+                <input class="input" type="text" name="name" id="stm_name" required="true" minlength="3" maxlength="100">
               </div>
 
               <div class="input-container">
                 <label class="input-label" for="stm_email"><i class="fa fa-solid fa-at"></i> Email</label> 
-                <input class="input" type="email" name="email" id="stm_email" required="true">
+                <input class="input" type="email" name="email" id="stm_email" required="true" minlength="3" maxlength="200">
               </div>
 
               <div class="input-container">
                 <label class="input-label" for="stm_subject"><i class="fa fa-solid fa-envelope-open-text"></i> Assunto</label> 
-                <input class="input" type="text" name="subject" id="stm_subject" required="true">
+                <input class="input" type="text" name="subject" id="stm_subject" required="true" minlength="3" maxlength="100">
               </div>
 
               <div class="input-container">
                 <label class="input-label" for="stm_message"><i class="fa fa-solid fa-comment"></i> Mensagem</label> 
-                <textarea class="input textarea" name="message" id="stm_message" required="true"></textarea>
+                <textarea class="input textarea" name="message" id="stm_message" required="true" minlength="3" maxlength="1000"></textarea>
               </div>
 
             </div>
@@ -322,14 +322,26 @@
               <button class="main-button" >Enviar</button>
             </div>
           </div>
-                        
 
         </form>
         </div>
        </div> 
+
       </div> 
     </div>
 
+    <div class="bottom-nav-container">
+      <div>
+        <div><strong><i class="fa fa-regular fa-copyright"></i>&nbsp;<span>2023 Lucas Mella</span></strong></div>
+      </div>
+      <div></div>
+      <div class="bottom-nav selectable-text">
+          <a href="https://github.com/LucasArthurMella" target="_blank"><i class="fa fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/lucas-arthur-campesatto-mella-661077274/" target="_blank"><i class="fa fa-brands fa-linkedin"></i></a>
+      </div>
+
+
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
