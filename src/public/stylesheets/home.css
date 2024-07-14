@@ -2,7 +2,7 @@
 /*GLOBAL BEGIN* 
 *==================*/
 .slick-dots li button:before{
-  font-size: 20px;
+  font-size: 1000px;
   line-height: 20px;
 }
 
@@ -116,6 +116,42 @@
 /*===================*/
 /*MAIN CONTAINER END*/
 /*=================*/
+
+
+/*==================*/
+/*FIXED ICONS BEGIN*/
+/*================*/
+
+#fixed-icons {
+  position: fixed; 
+  bottom: 20px; 
+  left: 20px;
+}
+
+#fixed-icons div {
+  display: flex;
+  flex-direction: column; 
+}
+
+#fixed-icons div a {
+  text-decoration: none;
+  font-size: 25px;
+  box-shadow: inset 0 0 0 0 #54b3d6;
+  color: #023436;
+  text-decoration: none;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out, text-shadow .3s ease-in-out, border-radius .3s ease-in-out;
+}
+
+
+
+#fixed-icons div a:hover {
+  color: #00bfb3;
+  text-shadow: none;
+}
+
+/*==================*/
+/*FIXED ICONS END*/
+/*================*/
 
 /*==============*/
 /*TOP BOX BEGIN*/
@@ -501,6 +537,27 @@
 /*MAIN CONTAINER END*/
 /*=================*/
 
+
+/*==================*/
+/*FIXED ICONS BEGIN*/
+/*================*/
+
+#fixed-icons {
+  left: .2%;
+}
+
+
+#fixed-icons div a {
+  font-size: 120%;
+}
+
+
+
+/*==================*/
+/*FIXED ICONS END*/
+/*================*/
+
+
 /*==============*/
 /*TOP BOX BEGIN*/
 /*============*/
@@ -679,6 +736,18 @@
 /*================*/
 /*MAIN NAVBAR END*/
 /*==============*/
+
+/*==================*/
+/*FIXED ICONS BEGIN*/
+/*================*/
+
+#fixed-icons {
+  display: none;
+}
+
+/*==================*/
+/*FIXED ICONS END*/
+/*================*/
 
 /*==============*/
 /*TOP BOX BEGIN*/

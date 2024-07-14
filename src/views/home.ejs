@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
     <link href="stylesheets/global.css" rel="stylesheet">
     <link href="stylesheets/home.css" rel="stylesheet">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
     <script src="https://kit.fontawesome.com/e269f9ec62.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <title>Lucas Mella | Desenvolvedor Backend</title>
   </head>
   <body>
@@ -22,6 +22,14 @@
         <a href="#contact">Contato</a>
       </div>
     </div>
+
+    <div id="fixed-icons">
+      <div>
+        <a href="https://github.com/LucasArthurMella" target="_blank"><i class="fa fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/lucas-arthur-campesatto-mella-661077274/" target="_blank"><i class="fa fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+    
     <div id="main-container">
       <div id="about"></div>
       <div class="top-box">
@@ -116,7 +124,7 @@
           <div class="selectable-text project-box-project-title">
             <a href="" >Agroloc</a>
           </div>
-          <div class="project-box-images">
+          <div class="project-box-images" id="myCarousel">
             <div>
               <img src="pictures/dynamic/ex1.png">
             </div>
@@ -138,15 +146,21 @@
           </div>
           <div class="project-box-images">
             <div>
-              <img src="pictures/dynamic/ex1.png">
+              <a data-fancybox="gallery2" href="pictures/dynamic/ex1.png">
+                <img src="pictures/dynamic/ex1.png">
+              </a>
             </div>
 
             <div>
-              <img src="pictures/dynamic/ex2.png">
+              <a data-fancybox="gallery2" href="pictures/dynamic/ex2.png">
+                <img src="pictures/dynamic/ex2.png">
+              </a>
             </div>
 
             <div>
-              <img src="pictures/dynamic/ex3.png">
+              <a data-fancybox="gallery2" href="pictures/dynamic/ex3.png">
+                <img src="pictures/dynamic/ex3.png">
+              </a>
             </div>
           </div>
         </div> 
@@ -343,9 +357,11 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script>var exports = {};</script>
-    <script src="home.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+    <!--<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>-->
+
+
+    <script type="module" src="home/bundle.js" ></script>
+
   </body>
 </html>
