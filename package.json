@@ -4,7 +4,8 @@
   "description": "Portfolio to showcase all my projects.",
   "main": "index.js",
   "scripts": {
-    "start": "tsc-watch --project . --onSuccess \"nodemon src/index.ts\""
+    "start": "tsc-watch --project . --onSuccess \"nodemon src/index.ts\"",
+    "dev": "concurrently \"webpack --config webpack.config.js --watch\" \"nodemon src/index.ts\""
   },
   "repository": {
     "type": "git",

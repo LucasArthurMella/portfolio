@@ -211,9 +211,13 @@
 }
 
 #cv-button {
+  width: 220px;
   font-size: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin: 0px;
   margin-top: 3%;
+  text-decoration: none;
 }
 /*============*/
 /*TOP BOX END*/
@@ -462,7 +466,7 @@
 #contact-box-second-form {
   margin-top: 30px;
   border-radius: 20px;
-  width: 80%;
+  width: 95%;
 }
 
 
@@ -753,7 +757,7 @@
 /*TOP BOX BEGIN*/
 /*============*/
 #top-box-first-texts h1 {
-  font-size: 355%;
+  font-size: 340%;
 }
 
 #top-box-second-container-title-div h1 {
@@ -858,6 +862,10 @@
 
 #contact-box-second-container-title-div {
   font-size: 20px;
+}
+
+#contact-box-second-form {
+  width: 95%
 }
 
 #contact-box-second-form .input {
