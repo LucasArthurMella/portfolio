@@ -8,7 +8,6 @@ export function home() {
 
 
 Fancybox.bind('[data-fancybox]', {
-  //
 });
 
 $(function(){
@@ -41,12 +40,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }
-
 });
 
+let dropdowns = document.querySelectorAll(".dropdown");
 
-
-
+for (let dropdown of dropdowns) {
+  let dropdownContent = dropdown.querySelector(".dropdown-content")!;
+  dropdown.addEventListener("click", () => {
+    dropdownContent.classList.toggle("show-dropdown");
+  });
+}
 
 }
 
