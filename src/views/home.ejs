@@ -10,13 +10,11 @@
     <script src="https://kit.fontawesome.com/e269f9ec62.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <title>Lucas Mella | Desenvolvedor Backend</title>
+    <title><%= texts.title %></title>
   </head>
   <body>
   <div id="about"></div>
     <div class="main-nav-container">
-
-    <!--<%=texts.technologies.title %>-->
 
       <div class="main-nav-box1-flex">
         <div class="main-nav-box1">
@@ -26,14 +24,26 @@
           </div>
 
           <div class="selectable-text">
-            <a href="projects">Todos Projetos</a>
+            <a href="projects"><%= texts.header.allProjects %></a>
           </div>
 
           <div class="dropdown">
+
+            <% if(lang == "pt-BR"){ %>
+
             <button class="dropbtn">🇧🇷</button>
             <div class="dropdown-content">
-              <a href="#">🇺🇸</a>
+              <a href="?lang=en-US">🇺🇸</a>
             </div>
+
+            <% } else {%>
+
+            <button class="dropbtn">🇺🇸</button>
+            <div class="dropdown-content">
+              <a href="?lang=pt-BR">🇧🇷</a>
+            </div>
+
+            <% } %>
           </div>
 
         </div>
@@ -47,10 +57,10 @@
 
       <div class="main-nav-box2-flex">
         <div class="main-nav-box2 selectable-text">
-          <a href="#about">Sobre</a>
-          <a href="#technologies">Tecnologias</a>
-          <a href="#projects">Projetos</a>
-          <a href="#contact">Contato</a>
+          <a href="#about"><%= texts.header.about %></a>
+          <a href="#technologies"><%= texts.header.technologies %></a>
+          <a href="#projects"><%= texts.header.projects %></a>
+          <a href="#contact"><%= texts.header.contact %></a>
         </div>
       </div>
       <div class="main-nav-box4-flex">
@@ -75,8 +85,8 @@
           <div>
             <div id="top-box-first-texts">
               <div>
-                <h2>Olá, meu nome é</h2>
-                <h1>Lucas Mella</h1>
+                <h2><%= texts.about.box1.h2%></h2>
+                <h1><%= texts.about.box1.h1%></h1>
               </div>
             </div>
             <div id="top-box-first-image">
@@ -87,15 +97,15 @@
         <div id=top-box-second>
           <div id="top-box-second-container">
             <div id="top-box-second-container-title-div">
-              <h1>Sobre mim</h1>     
+              <h1><%= texts.about.box2.aboutMe%></h1>     
             </div>
             <div id="top-box-second-texts">
-              <p>Sou um desenvolvedor back-end formado em engenharia de software que reside em Maringá, Paraná.</p>
-              <p>Começei a programar desde a adolescência, e começei a trabalhar oficialmente em 2022.</p>
-              <p>Minhas principais experiências envolvem o desenvolvimento de aplicações Web fullstack, criações de APIs backend, integrações de APIs externas entre outros.</p>
+              <p><%= texts.about.box2.p1%></p>
+              <p><%= texts.about.box2.p2%></p>
+              <p><%= texts.about.box2.p3%></p>
             </div>
             <div id="cv-button-container">
-              <a class="main-button" id="cv-button" href="documents/dynamic/cv.pdf" download>Baixar CV <i class="fa fa-solid fa-download"></i></a>
+              <a class="main-button" id="cv-button" href="documents/dynamic/cv.pdf" download><%= texts.about.box2.cvDownload%> <i class="fa fa-solid fa-download"></i></a>
             </div>
           </div>
         </div>
@@ -104,7 +114,7 @@
       <div id="technologies"></div>
 
       <div id="skill-box-title">
-        <h1>Principais Tecnologias</h1> 
+        <h1><%= texts.technologies.title %></h1> 
       </div>
 
       <div id="skill-box-container-flex">
@@ -152,7 +162,7 @@
       <div id="projects"></div>
 
       <div id="project-box-title">
-        <h1>Principais Projetos</h1> 
+        <h1><%= texts.projects.title%></h1> 
       </div>
 
       <div id="project-box-container-flex">
@@ -266,7 +276,7 @@
       <div id="project-button-container-flex">
 
         <div>
-          <button class="main-button" id="project-button">Ver Todos Projetos</button>
+          <button class="main-button" id="project-button"><%= texts.projects.projectsButton %></button>
         </div>
 
         
@@ -282,7 +292,7 @@
 
       <div id="contact"></div>
       <div id="contact-box-title">
-        <h1>Contato</h1> 
+        <h1><%= texts.contact.title %></h1> 
       </div>
 
       <div id="contact-box-container">
@@ -292,7 +302,7 @@
         <div class="justify-center">
           <div id="contact-box-first-container-title-div">
             <h1 class="title-shadow">
-              Minhas Redes 
+              <%= texts.contact.myNetworks.title %>
             </h1>
           </div>
         </div> 
@@ -352,7 +362,7 @@
         <div class="justify-center">
           <div id="contact-box-second-container-title-div">
             <h1 class="title-shadow">
-              Fale Comigo 
+              <%= texts.contact.speakToMe.title %>
             </h1>
           </div>
         </div> 
@@ -366,7 +376,7 @@
             <div class="input-group">
 
               <div class="input-container">
-                <label class="input-label" for="stm_name"><i class="fa fa-solid fa-user"></i> Nome</label> 
+                <label class="input-label" for="stm_name"><i class="fa fa-solid fa-user"></i> <%= texts.contact.speakToMe.name %></label> 
                 <input class="input" type="text" name="name" id="stm_name" required="true" minlength="3" maxlength="100">
               </div>
 
@@ -376,12 +386,12 @@
               </div>
 
               <div class="input-container">
-                <label class="input-label" for="stm_subject"><i class="fa fa-solid fa-envelope-open-text"></i> Assunto</label> 
+                <label class="input-label" for="stm_subject"><i class="fa fa-solid fa-envelope-open-text"></i> <%= texts.contact.speakToMe.matter %></label> 
                 <input class="input" type="text" name="subject" id="stm_subject" required="true" minlength="3" maxlength="100">
               </div>
 
               <div class="input-container">
-                <label class="input-label" for="stm_message"><i class="fa fa-solid fa-comment"></i> Mensagem</label> 
+                <label class="input-label" for="stm_message"><i class="fa fa-solid fa-comment"></i> <%= texts.contact.speakToMe.message %></label> 
                 <textarea class="input textarea" name="message" id="stm_message" required="true" minlength="3" maxlength="1000"></textarea>
               </div>
 
@@ -389,7 +399,7 @@
 
             
             <div class="input-group justify-center">
-              <button class="main-button" >Enviar</button>
+              <button class="main-button"><%= texts.contact.speakToMe.send %></button>
             </div>
           </div>
 
@@ -402,7 +412,7 @@
 
     <div class="bottom-nav-container">
       <div>
-        <div><strong><i class="fa fa-regular fa-copyright"></i>&nbsp;<span>2023 Lucas Mella</span></strong></div>
+        <div><strong><i class="fa fa-regular fa-copyright"></i>&nbsp;<span>2024 Lucas Mella</span></strong></div>
       </div>
       <div></div>
       <div class="bottom-nav selectable-text">

@@ -5,6 +5,7 @@ declare global {
       PORT: string;
       HOST: string;
       MONGO_URI: string;
+      JWT_SECRET: string;
     }
   }
 }

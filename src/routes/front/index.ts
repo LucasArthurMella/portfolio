@@ -1,18 +1,25 @@
 import { Router } from "express";
-import  helloworldRoute  from "./helloworld"
 import { generateText } from "../../constants/languages";
+import admRoutes from "./adm";
 const router = Router();
 
 router.get("/", (req, res) => {
+  let lang = req.query.lang;
 
-  let texts = generateText("pt-BR");
+  let treated_lang: "en-US" | "pt-BR";
 
-  res.render("home", {texts})
+  if ((lang !== "en-US" && lang !== "pt-BR") || (lang == undefined || lang == "pt-BR")){
+    treated_lang = "pt-BR";
+  }else {
+    treated_lang = "en-US"
+  } 
+
+  let texts = generateText(treated_lang);
+  
+  res.render("home", {texts, lang: treated_lang})
 
 });
 
-router.get("/adm", (req,res) => {
-  res.render("adm-login")
-});
+router.use("/", admRoutes);
 
 export default router;

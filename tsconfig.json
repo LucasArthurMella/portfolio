@@ -110,7 +110,8 @@
   },
   "include": [
    "src/public/javascripts/*.ts",
-   "src/globals.d.ts"
+   "src/globals.d.ts",
+   "src/env.d.ts"
   ],
   "exclude": [
     "node_modules",

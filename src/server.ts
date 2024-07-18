@@ -2,23 +2,23 @@ import express from "express";
 import backendRoutes from "./routes/back";
 import frontendRoutes from "./routes/front";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import { getEnv } from "./constants/envs";
 import path from "path";
-import cors from 'cors';
 
 
 class App {
   app: express.Application;
 
   constructor(){
+    dotenv.config({path: ".env"});
     this.app = express();
     this.middlewares();
     this.routes();
-    //this.database();
+    this.database();
   }
   
   middlewares(){
-    //this.app.use(cors());
     this.app.set("view engine", "ejs");
     this.app.set("views", path.join(__dirname, "views"));
     this.app.use(express.static(path.join(__dirname, 'public')));
