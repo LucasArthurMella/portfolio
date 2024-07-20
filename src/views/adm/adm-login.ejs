@@ -12,7 +12,7 @@
   </head>
   <body>
         <div class="main-form-box-flex" >
-        <form method="post" action="/confirm-login"  class="form-box main-form-box" enctype="multipart/form-data">
+        <form method="post" action="/confirm-login" class="form-box main-form-box">
           <div class="form-container">
 
             <h1>Ademir</h1>
@@ -25,7 +25,7 @@
 
               <div class="input-container">
                 <label class="input-label" for="password"><i class="fa fa-solid fa-envelope-open-text"></i> Password</label> 
-                <input class="input" type="text" name="password" id="password" required="true" minlength="3" maxlength="100">
+                <input class="input" type="password" name="password" id="password" required="true" minlength="3" maxlength="100">
               </div>
             </div>
             
@@ -35,7 +35,8 @@
 
           </div>
         </form>
-
+          
+        <script type="module" src="adm-login/bundle.js"></script>
         </div> 
   </body>
 </html>

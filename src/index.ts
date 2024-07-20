@@ -1,10 +1,8 @@
 import { getEnv } from "./constants/envs";
 import server from "./server";
-import dotenv from "dotenv";
 
 function main(){
 
-  dotenv.config({path: ".env"});
   let env = getEnv();
   console.log("env" + process.env.MONGO_URI);
 

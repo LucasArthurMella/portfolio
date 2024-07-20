@@ -53,6 +53,7 @@
     "fp-ts": "^2.16.8",
     "jquery": "^3.7.1",
     "mongoose": "^8.4.5",
+    "neverthrow": "^7.0.0",
     "slick-carousel": "^1.8.1"
   }
 }
