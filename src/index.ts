@@ -4,7 +4,6 @@ import server from "./server";
 function main(){
 
   let env = getEnv();
-  console.log("env" + process.env.MONGO_URI);
 
   try {
     server.listen(env.server.port, () => {

@@ -12,30 +12,102 @@
     <script src="https://kit.fontawesome.com/e269f9ec62.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="header">
-    </div>
-    <div class="main-image"> 
-     <img src="/pictures/static/greenguy3.jpg"> 
-    </div>
-    <div class="side-bar">
-        <div class="side-bar-clickable">
-           <div class="side-bar-clickable-text">
-            <i class="fa fa-solid fa-home"></i> Home 
-           </div> 
-        </div>
+    <div class="header"></div>
+      
+    <div class="main-content">
+      
+      <ul class="side-bar">
+        <li class="main-image"> 
+          <img src="/pictures/static/greenguy3.jpg"> 
+        </li>
 
-        <div class="side-bar-header">
+        <li class="side-bar-clickable">
+            <a href="/adm/pages" class="side-bar-clickable-button">
+              <div>
+                <i class="fa fa-solid fa-home"></i> Home 
+              </div>
+            </a> 
+        </li>
+
+        <li class="side-bar-header">
           <div class="side-bar-header-text">
             <i class="fa fa-solid fa-globe"></i> Main Page 
           </div>
-        </div>
+        </li>
 
+        <li class="side-bar-clickable">
+
+           <a href="#" class="side-bar-clickable-group-button">
+             <div>
+                <i class="fa fa-solid fa-microchip"></i> Technologies
+             </div>
+           </a> 
+
+          <li class="children-group-inactive">
+            <ul class="side-bar-clickable-child-group">
+
+              <li class="side-bar-clickable-group-child">
+                <a href="/adm/pages/technologies/new" class="side-bar-clickable-button">
+                  <div><i class="fa fa-solid fa-plus"></i> Add</div>
+                </a>
+              </li>
+
+              <li class="side-bar-clickable-group-child">
+                <a href="/adm/pages/technologies" class="side-bar-clickable-button">
+                  <div><i class="fa fa-solid fa-list"></i> List</div>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+        </li>
+
+
+        <li class="side-bar-clickable">
+
+           <a href="#" class="side-bar-clickable-group-button">
+             <div>
+                <i class="fa fa-solid fa-map"></i> Projects
+             </div>
+           </a> 
+
+          <li class="children-group-inactive">
+            <ul class="side-bar-clickable-child-group">
+
+              <li class="side-bar-clickable-group-child">
+                <a href="/adm/pages/projects/new" class="side-bar-clickable-button">
+                  <div><i class="fa fa-solid fa-plus"></i> Add</div>
+                </a>
+              </li>
+
+              <li class="side-bar-clickable-group-child">
+                <a href="/adm/pages/projects" class="side-bar-clickable-button">
+                  <div><i class="fa fa-solid fa-list"></i> List</div>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+        </li>
+      </ul>
+
+      <div class="panel">
+
+          <% if(see != "none") { 
+              if (action=="list") {%>
+          <%- include("pages/"+see+"/list") %> 
+          <%  } else if (action=="new") { %>
+          <%- include("pages/"+see+"/new") %> 
+          <%  } else if (action=="edit") {%>
+          <%- include("pages/"+see+"/edit") %> 
+          <% } }else { %>
+          <%- include("pages/home") %> 
+          <% } %>
+
+      </div>
 
     </div>
 
-    <div class="panel">
-      
-    </div>
 
     <script type="module" src="/adm-pages/bundle.js"></script>
   </body>

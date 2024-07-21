@@ -23,7 +23,7 @@ admRoutes.get("/check-token", async (req,res) => {
 
   if (token == null) return res.json({authenticated: false});
 
-  console.log(token);
+  //console.log(token);
 
   jwt.verify(token, getEnv().jwtSecret, (err: any, _ok: any) => {
     if (err)  {
