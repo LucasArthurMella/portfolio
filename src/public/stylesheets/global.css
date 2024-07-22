@@ -8,6 +8,10 @@ body {
   font-style: normal;
 }
 
+.ml-0{
+  margin-left: 0px !important;
+}
+
 /* MAIN BUTTON */
 .main-button {
   margin: 10px;
@@ -83,6 +87,10 @@ body {
   transition: border .1s ease-in-out, box-shadow .1s ease-in-out;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.file {
+padding-top: 6px;
 }
 
 .input:focus {

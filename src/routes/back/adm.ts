@@ -2,11 +2,12 @@ import { Router } from "express";
 import { login } from "../../services/adm";
 import jwt from "jsonwebtoken";
 import { getEnv } from "../../constants/envs";
+import multer from "multer";
+import { technologyModel } from "../../models/technology";
 
 const admRoutes = Router();
 
 admRoutes.post("/confirm-login", async (req,res) => {
-  console.log(req.body);
 
   let result = await login(req.body.email, req.body.password);
   if (result.isOk()) {
@@ -33,6 +34,20 @@ admRoutes.get("/check-token", async (req,res) => {
     }
   })
 });
+
+const imageUrl = "src/public/pictures/dynamic/";
+
+const uploadTechnology = multer({dest: imageUrl + "technology"});
+admRoutes.post("/adm/technology", uploadTechnology.single("image_url"), async (req, res) => {
+  let postObject = {name: req.body.name, image_url: req.file?.filename};
+  await technologyModel.create(postObject);
+  res.redirect(("/adm/pages/technology"));
+
+  //console.log(req.body);
+  //console.log(req.file);
+});
+
+
 
 
 

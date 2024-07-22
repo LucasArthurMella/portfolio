@@ -31,7 +31,7 @@ export function findAndLoadPage(req: Request, res: Response, action: string) {
 
   let page = req.params.page;
   const filePath = path.join(__dirname, `../views/adm/pages/${page}/list.ejs`);
-  console.log(filePath);
+  //console.log(filePath);
 
   fs.access(filePath, fs.constants.F_OK, (err) => {
     if(err){
