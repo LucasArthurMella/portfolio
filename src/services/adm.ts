@@ -6,6 +6,7 @@ import { getEnv } from "../constants/envs";
 import { Request, Response } from "express";
 import path from "path";
 import fs from "fs";
+import { technologyModel } from "../models/technology";
 
 let envVars = getEnv();
 
@@ -33,13 +34,28 @@ export function findAndLoadPage(req: Request, res: Response, action: string) {
   const filePath = path.join(__dirname, `../views/adm/pages/${page}/list.ejs`);
   //console.log(filePath);
 
-  fs.access(filePath, fs.constants.F_OK, (err) => {
+  fs.access(filePath, fs.constants.F_OK, async (err) => {
     if(err){
       res.redirect("/adm/pages");
     }else{
-      res.render("adm/main", { see: req.params.page, action: action});
+      if(action=="list"){
+        let items = await selectModelGetItems(req.params.page);
+        res.render("adm/main", { see: req.params.page, action: action, items});
+      } else if (action == "edit"){
+        res.render("adm/main", { see: req.params.page, action: action});
+      }else{
+
+        res.render("adm/main", { see: req.params.page, action: action});
+      }
     }
   })
+
+}
+
+export async function selectModelGetItems(page: string){
+  if(page == "technology"){
+    return await technologyModel.find({});
+  }
 
 }
 

@@ -38,6 +38,7 @@ admRoutes.get("/check-token", async (req,res) => {
 const imageUrl = "src/public/pictures/dynamic/";
 
 const uploadTechnology = multer({dest: imageUrl + "technology"});
+
 admRoutes.post("/adm/technology", uploadTechnology.single("image_url"), async (req, res) => {
   let postObject = {name: req.body.name, image_url: req.file?.filename};
   await technologyModel.create(postObject);
