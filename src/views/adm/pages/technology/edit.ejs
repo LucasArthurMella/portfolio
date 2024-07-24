@@ -1,7 +1,31 @@
   <div class="page-title">
-    <h1>Edit Technology</h1> 
+    <h1>Add Technology</h1> 
     <hr>
   </div>
-  <div class="form-box main-form-box">
-  EDITTTTTT
-  </div>      
+
+  <form action="/api/adm/technology/<%= item._id%>?_method=PATCH" method="post" class="form-box main-form-box adm-form" enctype="multipart/form-data">
+    <div class="form-container">
+      <div class="input-group">
+        <div class="input-container">
+          <label class="input-label" for="name">Name</label>
+          <input value="<%= item.name %>" class="input" type="text" name="name" id="name"> 
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="image_url">Image</label>
+          <input class="input file" type="file" name="image_url" id="image_url"> 
+        </div>
+        <div class="input-container">
+          <label class="input-label">Current Image (to keep it leave it blank) </label>
+          <img style="max-width: 150px;" src="/pictures/dynamic/technology/<%= item.image_url %>" alt="">
+        </div>
+      </div>
+
+    <div class="input-group">
+      <button class="main-button ml-0">Save</button>
+    </div>
+
+    </div>
+
+
+
+  </form>      

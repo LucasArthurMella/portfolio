@@ -14,8 +14,7 @@
   </head>
   <body>
   <div id="about"></div>
-    <div class="main-nav-container">
-
+    <header class="main-nav-container">
       <div class="main-nav-box1-flex">
         <div class="main-nav-box1">
 
@@ -67,18 +66,16 @@
        <div class="main-nav-box4">
        </div> 
       </div>
-
-
-    </div>
+    </header>
 
     <div id="fixed-icons">
       <div>
-        <a href="https://github.com/LucasArthurMella" target="_blank"><i class="fa fa-brands fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/lucas-arthur-campesatto-mella-661077274/" target="_blank"><i class="fa fa-brands fa-linkedin"></i></a>
+        <a href="<%= socials.github.url%>" target="_blank"><i class="fa fa-brands fa-github"></i></a>
+        <a href="<%= socials.linkedin.url%>" target="_blank"><i class="fa fa-brands fa-linkedin"></i></a>
       </div>
     </div>
     
-    <div id="main-container">
+    <main id="main-container">
       <div id="about"></div>
       <div class="top-box">
         <div id="top-box-first">
@@ -105,7 +102,7 @@
               <p><%= texts.about.box2.p3%></p>
             </div>
             <div id="cv-button-container">
-              <a class="main-button" id="cv-button" href="documents/dynamic/cv.pdf" download><%= texts.about.box2.cvDownload%> <i class="fa fa-solid fa-download"></i></a>
+              <a class="main-button" id="cv-button" href="/documents/dynamic/cv/<%if(lang=="pt-BR"){%><%= cv.cv_portuguese_url%><%}else{%><%=cv.cv_english_url%><%}%>" download><%= texts.about.box2.cvDownload%> <i class="fa fa-solid fa-download"></i></a>
             </div>
           </div>
         </div>
@@ -120,41 +117,16 @@
       <div id="skill-box-container-flex">
         <div id="skill-box-container">
 
+          <% for(technology of technologies) {%>
           <div class="skill-box"> 
             <div class="skill-box-flex">
               <div>
-                <img src="pictures/static/logos/nodejs.png" alt="">
+                <img src="pictures/dynamic/technology/<%= technology.image_url%>" alt="">
               </div>
             </div>
-            <p>NodeJS</p>
+            <p><%= technology.name %></p>
           </div>
-
-          <div class="skill-box"> 
-            <div class="skill-box-flex">
-              <div>
-                <img src="pictures/static/logos/typescript.png" alt="">
-              </div>
-            </div>
-            <p>TypeScript</p>
-          </div>
-
-          <div class="skill-box"> 
-            <div class="skill-box-flex">
-              <div>
-                <img src="pictures/static/logos/mongo.png" alt="">
-              </div>
-            </div>
-            <p>MongoDB</p>
-          </div>
-
-          <div class="skill-box"> 
-            <div class="skill-box-flex">
-              <div>
-                <img src="pictures/static/logos/rust-logo-512x512.png" alt="">
-              </div>
-            </div>
-            <p>Rust</p>
-          </div>
+          <% } %> 
 
         </div>
       </div>
@@ -282,7 +254,7 @@
         
         <div>
           <button class="main-button" id="project-github-button">
-            <a href="https://github.com/LucasArthurMella" target="_blank">
+            <a href="<%=socials.github.url%>" target="_blank">
               <i class="fa fa-brands fa-github"></i> GitHub
             </a>
           </button>
@@ -318,36 +290,36 @@
 
             <div class="justify-center flex-column">
 
-            <a href="mailto:lucasmella16@gmail.com" class="selectable-box contact-box-anchor">
+            <a href="mailto:<%=socials.email%>" class="selectable-box contact-box-anchor">
              <div class="contact-box justify-center flex-column">
                <div class="contact-box-box-title">
                  <i class="fa fa-solid fa-envelope"></i> <strong>Email</strong>
                </div>
                <div class="">
-                lucasmella16@gmail.com
+                  <%=socials.email%> 
                </div>
              </div>
             </a>
 
-            <a href="https://github.com/LucasArthurMella" target="_blank" class="selectable-box contact-box-anchor">
+            <a href="<%=socials.github.url%>" target="_blank" class="selectable-box contact-box-anchor">
              <div class="contact-box justify-center flex-column">
                <div class="contact-box-box-title">
                  <i class="fa fa-solid fa-github"></i> <strong>Github</strong> 
                </div>
                <div class="">
-                LucasArthurMella
+                  <%=socials.github.title%> 
                </div>
              </div>
             </a>
 
 
-            <a href="https://www.linkedin.com/in/lucas-arthur-campesatto-mella-661077274/" target="_blank" class="selectable-box contact-box-anchor">
+            <a href="<%=socials.linkedin.url%>" target="_blank" class="selectable-box contact-box-anchor">
              <div class="contact-box justify-center flex-column">
                <div class="contact-box-box-title">
                  <i class="fa fa-brands fa-linkedin"></i> <strong>Linkedin </strong>
                </div>
                <div class="">
-                 Lucas Arthur Campesatto Mella
+                  <%=socials.linkedin.title%> 
                </div>
              </div>
             </a>
@@ -408,20 +380,18 @@
        </div> 
 
       </div> 
-    </div>
+    </main>
 
-    <div class="bottom-nav-container">
+    <footer class="bottom-nav-container">
       <div>
         <div><strong><i class="fa fa-regular fa-copyright"></i>&nbsp;<span>2024 Lucas Mella</span></strong></div>
       </div>
       <div></div>
       <div class="bottom-nav selectable-text">
-          <a href="https://github.com/LucasArthurMella" target="_blank"><i class="fa fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/lucas-arthur-campesatto-mella-661077274/" target="_blank"><i class="fa fa-brands fa-linkedin"></i></a>
+        <a href="<%=socials.github.url%>" target="_blank"><i class="fa fa-brands fa-github"></i></a>
+        <a href="<%=socials.linkedin.url%>" target="_blank"><i class="fa fa-brands fa-linkedin"></i></a>
       </div>
-
-
-    </div>
+    </footer>
 
     <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
     <!--<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>-->

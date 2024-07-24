@@ -1,0 +1,45 @@
+  <div class="page-title">
+    <h1>Edit Socials</h1> 
+    <hr>
+  </div>
+
+  <form action="/api/adm/socials" method="post" class="form-box main-form-box adm-form">
+    <div class="form-container">
+      <div class="input-group">
+
+        <div class="input-container">
+          <label class="input-label" for="email">Email</label>
+          <input class="input" type="email" name="email" id="email" value="<%=item?.email%>"> 
+        </div> 
+
+        <div class="input-container">
+          <label class="input-label" for="githubTitle">GitHub Title</label>
+          <input class="input" type="text" name="githubTitle" id="githubTitle" value="<%=item?.github?.title%>"> 
+        </div> 
+
+        <div class="input-container">
+          <label class="input-label" for="githubUrl">GitHub Url</label>
+          <input class="input" type="text" name="githubUrl" id="githubUrl" value="<%=item?.github?.url%>"> 
+        </div> 
+
+        <div class="input-container">
+          <label class="input-label" for="linkedinTitle">Linkedin Title</label>
+          <input class="input" type="text" name="linkedinTitle" id="linkedinTitle" value="<%=item?.linkedin?.title%>"> 
+        </div> 
+
+        <div class="input-container">
+          <label class="input-label" for="linkedinUrl">Linkedin Url</label>
+          <input class="input" type="text" name="linkedinUrl" id="linkedinUrl" value="<%=item?.linkedin?.url%>"> 
+        </div> 
+
+      </div>
+
+    <div class="input-group">
+      <button class="main-button ml-0">Edit</button>
+    </div>
+
+    </div>
+
+
+
+  </form>      

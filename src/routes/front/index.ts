@@ -1,9 +1,12 @@
 import { Router } from "express";
 import { generateText } from "../../constants/languages";
 import admRoutes from "./adm";
+import { technologyModel } from "../../models/technology";
+import { cvModel } from "../../models/cv";
+import { socialsModel } from "../../models/socials";
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   let lang = req.query.lang;
 
   let treated_lang: "en-US" | "pt-BR";
@@ -15,8 +18,10 @@ router.get("/", (req, res) => {
   } 
 
   let texts = generateText(treated_lang);
-  
-  res.render("home", {texts, lang: treated_lang})
+  let socials = await socialsModel.findOne({});
+  let cv = await cvModel.findOne({});
+  let technologies = await technologyModel.find({});  
+  res.render("home", {lang: treated_lang, texts, socials, cv, technologies});
 
 });
 

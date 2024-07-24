@@ -1,7 +1,5 @@
 import { Router } from "express";
-import path from "path";
-import fs from "fs";
-import { findAndLoadPage, selectModelGetItems } from "../../services/adm";
+import { findAndLoadPage } from "../../services/adm";
 
 
 const admRoutes = Router();
@@ -13,6 +11,11 @@ admRoutes.get("/adm", (req,res) => {
 
 admRoutes.get("/adm/pages", (req,res) => {
   res.render("adm/main", {see: "none"});
+});
+
+
+admRoutes.get("/adm/pages/single/:page", (req, res) => {
+  findAndLoadPage(req, res, "single");
 });
 
 admRoutes.get("/adm/pages/:page", (req,res) => {
@@ -28,6 +31,7 @@ admRoutes.get("/adm/pages/:page/new", (req,res) => {
 admRoutes.get("/adm/pages/:page/:id", (req,res) => {
   findAndLoadPage(req, res, "edit");
 });
+
 
 
 

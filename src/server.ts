@@ -4,6 +4,7 @@ import frontendRoutes from "./routes/front";
 import mongoose from "mongoose";
 import { getEnv } from "./constants/envs";
 import path from "path";
+import methodOverride  from "method-override";
 
 class App {
   app: express.Application;
@@ -18,6 +19,7 @@ class App {
   middlewares(){
     this.app.set("view engine", "ejs");
     this.app.set("views", path.join(__dirname, "views"));
+    this.app.use(methodOverride('_method'));
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true}));
     this.app.use(express.static(path.join(__dirname, 'public')));

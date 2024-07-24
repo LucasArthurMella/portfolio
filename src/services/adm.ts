@@ -7,6 +7,8 @@ import { Request, Response } from "express";
 import path from "path";
 import fs from "fs";
 import { technologyModel } from "../models/technology";
+import { cvModel } from "../models/cv";
+import { socialsModel } from "../models/socials";
 
 let envVars = getEnv();
 
@@ -31,31 +33,52 @@ export async function createUser(email: string, password: string){
 export function findAndLoadPage(req: Request, res: Response, action: string) {
 
   let page = req.params.page;
-  const filePath = path.join(__dirname, `../views/adm/pages/${page}/list.ejs`);
+  const filePath = path.join(__dirname, `../views/adm/pages/${page}/${action}.ejs`);
   //console.log(filePath);
 
   fs.access(filePath, fs.constants.F_OK, async (err) => {
     if(err){
+      console.log(action);
       res.redirect("/adm/pages");
     }else{
+
       if(action=="list"){
         let items = await selectModelGetItems(req.params.page);
         res.render("adm/main", { see: req.params.page, action: action, items});
       } else if (action == "edit"){
-        res.render("adm/main", { see: req.params.page, action: action});
+        let item = await selectModelFindItemById(req.params.page, req.params.id);
+        res.render("adm/main", { see: req.params.page, action: action, item});
+      } else if(action == "single"){
+        let item = await selectModelSingle(req.params.page);
+        res.render("adm/main", { see: req.params.page, action: action, item});
       }else{
-
         res.render("adm/main", { see: req.params.page, action: action});
       }
+
     }
   })
 
 }
 
-export async function selectModelGetItems(page: string){
+async function selectModelGetItems(page: string){
   if(page == "technology"){
     return await technologyModel.find({});
   }
-
 }
+
+async function selectModelFindItemById(page:string, id: string){
+  if(page == "technology"){
+    return await technologyModel.findById(id);
+  }
+}
+
+async function selectModelSingle(page: string) {
+  if(page == "cv"){
+    return await cvModel.findOne({});
+  }else if (page=="socials"){
+    return await socialsModel.findOne({});
+  }
+}
+
+
 

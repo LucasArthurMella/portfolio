@@ -1,0 +1,37 @@
+
+  <div class="page-title">
+    <h1>Edit CV</h1> 
+    <hr>
+  </div>
+
+  <form action="/api/adm/cv" method="post" class="form-box main-form-box adm-form" enctype="multipart/form-data">
+    <div class="form-container">
+      <div class="input-group">
+
+        <div class="input-container">
+          <label class="input-label" for="cv_portuguese">CV Portuguese</label>
+          <input class="input file" type="file" name="cv_portuguese" id="cv_portuguese"> 
+        </div>
+
+        <% if (item){ %>
+        <a href="/documents/dynamic/cv/<%= item.cv_portuguese_url %>" download><%= item.cv_portuguese_url %></a>
+        <% } %>
+
+        <div class="input-container">
+          <label class="input-label" for="cv_english">CV English</label>
+          <input class="input file" type="file" name="cv_english" id="cv_english"> 
+        </div>
+
+        <% if (item){ %>
+          <a href="/documents/dynamic/cv/<%= item.cv_english_url %>" download><%= item.cv_english_url %></a>
+        <% } %>
+
+      </div>
+
+    <div class="input-group">
+      <button class="main-button ml-0">Edit</button>
+    </div>
+
+    </div>
+
+  </form>      

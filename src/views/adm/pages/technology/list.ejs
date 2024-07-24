@@ -26,13 +26,15 @@
         <td class="table-td table-actions">
           <div>
 
-          <a href="/adm/pages/technology/32322332">
+            <a href="/adm/pages/technology/<%= item._id%>">
             <i class="fa fa-solid fa-edit"></i>
           </a>
           <span>-</span>
-          <a href="">
-            <i class="fa fa-solid fa-trash"></i>
-          </a>
+          <form action="/api/adm/technology/<%= item._id%>?_method=DELETE" method="POST">
+            <button type="submit">
+              <i class="fa fa-solid fa-trash"></i>
+            </button>
+          </form>
 
           </div>
         </td>
@@ -41,4 +43,4 @@
     </tbody>
   </table>
 
-</div>      
+</div>  

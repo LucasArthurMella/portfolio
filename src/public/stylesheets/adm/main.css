@@ -195,12 +195,15 @@ ul {
   padding-right: 5px;
 }
 
-.table-actions a {
+.table-actions a, button {
+  background: none;
+  border: none;
   text-decoration: none;
   color: #00bfb3;
 }
 
-.table-actions a:hover {
+.table-actions a:hover, .table-actions button:hover {
+  cursor: pointer;
   color: white;
 }
 
