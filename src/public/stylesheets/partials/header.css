@@ -1,0 +1,159 @@
+/*==================*/
+/*MAIN NAVBAR BEGIN*/
+/*================*/
+.main-nav-container {
+  display: grid;
+  grid-template-columns: 1.3fr 2fr;
+  /*min-height: 70px; */
+  background: rgb(2,39,41);
+  background: linear-gradient(90deg, rgba(2,39,41,1) 0%, rgba(1,22,23,1) 50%, rgba(2,39,41,1) 100%); 
+  padding-right: 10%;
+  position: sticky;
+  text-shadow: 5px 5px 2px #023436;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.main-nav-box1-flex {
+  padding-left: 15px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.main-nav-box1 {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.main-nav-box1 div:first-of-type, .main-nav-box1 div:nth-of-type(2) {
+  margin-right: 5px;
+}
+
+.main-nav-box1-flex #main-nav-box1-home-button {
+  font-size: 30px;
+  padding: 5px;
+}
+
+.main-nav-box1 .dropbtn, .main-nav-box1 .dropdown-content a {
+  font-size: 20px;
+}
+
+.main-nav-box2-flex {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.main-nav-box3-flex {
+  display: none;
+}
+
+/*================*/
+/*MAIN NAVBAR END*/
+/*==============*/
+
+
+
+@media (max-width: 1024px){
+
+
+/*==================*/
+/*MAIN NAVBAR BEGIN*/
+/*================*/
+
+.main-nav-container {
+  padding-right: 10px !important;
+}
+
+.main-nav-container a {
+  font-size: 20px !important;
+}
+
+/*================*/
+/*MAIN NAVBAR END*/
+/*==============*/
+
+}
+
+
+@media (max-width: 768px){
+/*==================*/
+/*MAIN NAVBAR BEGIN*/
+/*================*/
+
+.main-nav-open {
+  display: flex !important;
+}
+
+.main-nav-container {
+  grid-template-columns: 1.5fr 0.3fr;
+  padding-right: 0px;
+}
+
+.main-nav-box1-flex a {
+  /*display: none;*/
+  font-size: 20px;
+}
+
+.main-nav-box1-flex div:nth-of-type(2) a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
+.main-nav-box1 .dropbtn, .main-nav-box1 .dropdown-content a {
+  font-size: 18px;
+}
+
+.main-nav-box2-flex {
+
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  grid-column: 1 / span 2;
+  padding-bottom: 20px;
+  
+}
+
+.main-nav-box2-flex a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 25px;
+}
+
+.main-nav-box2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.main-nav-box3-flex {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.main-nav-box3-flex a {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/*================*/
+/*MAIN NAVBAR END*/
+/*==============*/
+
+
+}
+
+
+
+
+
+

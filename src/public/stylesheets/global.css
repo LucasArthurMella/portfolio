@@ -12,6 +12,61 @@ body {
   margin-left: 0px !important;
 }
 
+.selectable-text a {
+  box-shadow: inset 0 0 0 0 #54b3d6;
+  color: #00bfb3;
+  text-decoration: none;
+  font-size: 25px;
+  padding-right: 15px;
+  padding-left: 15px;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out, text-shadow .3s ease-in-out, border-radius .3s ease-in-out;
+  border-radius: 3px;
+}
+
+.selectable-text a:hover {
+  color: #023436;
+  box-shadow: inset 400px 0 0 0 #00bfb3;
+  text-shadow: none;
+  border-radius: 20px; 
+}
+
+.selectable-box {
+  box-shadow: inset 0 0 0 0 #54b3d6;
+  color: #00bfb3;
+  text-decoration: none;
+  font-size: 25px;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out, text-shadow .3s ease-in-out, border-radius .3s ease-in-out;
+  border-radius: 20px;
+}
+
+
+.selectable-box:hover {
+  color: #023436;
+  box-shadow: inset 400px 0 0 0 #00bfb3;
+  text-shadow: none;
+  border-radius: 20px; 
+}
+
+
+.title-shadow {
+  color: white;
+  text-shadow: 5px 5px 9px #037971;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
 /* MAIN BUTTON */
 .main-button {
   margin: 10px;

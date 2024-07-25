@@ -1,0 +1,53 @@
+    <header class="main-nav-container">
+      <div class="main-nav-box1-flex">
+        <div class="main-nav-box1">
+
+          <div class="selectable-text">
+            <a id="main-nav-box1-home-button" href="/"><i class="fa fa-solid fa-home"></i></a>
+          </div>
+
+          <div class="selectable-text">
+            <a href="/projects"><%= texts.header.allProjects %></a>
+          </div>
+
+          <div class="dropdown">
+
+            <% if(lang == "pt-BR"){ %>
+
+            <button class="dropbtn">🇧🇷</button>
+            <div class="dropdown-content">
+              <a href="?lang=en-US">🇺🇸</a>
+            </div>
+
+            <% } else {%>
+
+            <button class="dropbtn">🇺🇸</button>
+            <div class="dropdown-content">
+              <a href="?lang=pt-BR">🇧🇷</a>
+            </div>
+
+            <% } %>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="main-nav-box3-flex">
+        <div class="selectable-text">
+          <a id="main-burguer"><i class="fa fa-solid fa-bars"></i></a> 
+        </div> 
+      </div>
+
+      <div class="main-nav-box2-flex">
+        <div class="main-nav-box2 selectable-text">
+          <a href="/#about"><%= texts.header.about %></a>
+          <a href="/#technologies"><%= texts.header.technologies %></a>
+          <a href="/#projects"><%= texts.header.projects %></a>
+          <a href="/#contact"><%= texts.header.contact %></a>
+        </div>
+      </div>
+      <div class="main-nav-box4-flex">
+       <div class="main-nav-box4">
+       </div> 
+      </div>
+</header>
