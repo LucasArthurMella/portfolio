@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { generateText } from "../../constants/languages";
+import { generateTextHome, generateTextProjects } from "../../constants/languages";
 import admRoutes from "./adm";
 import { technologyModel } from "../../models/technology";
 import { cvModel } from "../../models/cv";
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
     treated_lang = "en-US"
   } 
 
-  let texts = generateText(treated_lang);
+  let texts = generateTextHome(treated_lang);
   let socials = await socialsModel.findOne({});
   let cv = await cvModel.findOne({});
   let technologies = await technologyModel.find({});  
@@ -36,7 +36,7 @@ router.get("/projects", async (req,res) => {
     treated_lang = "en-US"
   } 
 
-  let texts = generateText(treated_lang);
+  let texts = generateTextProjects(treated_lang);
   let socials = await socialsModel.findOne({});
   res.render("projects", {lang: treated_lang, texts, socials });
 

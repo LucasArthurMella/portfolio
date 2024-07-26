@@ -20,3 +20,96 @@
 /*===================*/
 /*MAIN CONTAINER END*/
 /*=================*/
+
+/*===============*/
+/*PROJECTS SEARCH BEGIN*/
+/*=============*/
+
+
+#project-box-title {
+  text-align: center;
+  font-size: 350%;
+  text-shadow: 12px 12px 1px #037971;
+  color: white;
+  padding-top: 20px;
+}
+
+#project-box-title h1 {
+  margin: 0px;
+}
+
+.project-search-form-box {
+  margin-top: 20px;
+  border-radius: 30px;
+  width: 90%;
+}
+
+.project-search-form-container {
+  width: 90%;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.project-search-group {
+  display: grid;
+  grid-template-columns: 1.7fr 0.3fr;
+}
+
+.project-search-button {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.input-label-inline {
+  font-size: 20px !important;
+}
+
+/*===============*/
+/*PROJECTS SEARCH BEGIN*/
+/*=============*/
+
+
+
+@media (max-width: 768px){
+
+
+/*===============*/
+/*PROJECTS SEARCH BEGIN*/
+/*=============*/
+
+
+.project-search-form-box {
+  margin-top: 20px;
+  border-radius: 30px;
+  width: 95%;
+}
+
+.project-search-form-container {
+  width: 92%;
+}
+
+.project-search-group {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.search-form-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+/*===============*/
+/*PROJECTS SEARCH BEGIN*/
+/*=============*/
+
+
+
+}
+
+
+
+
+
+
+
+

@@ -17,7 +17,44 @@
     <%- include("partials/header") %>
 
     <main id="main-container">
-aaaaaaaaa
+
+      <div id="project-box-title">
+        <h1><%= texts.projects.title%></h1> 
+      </div>
+
+      <div class="justify-center">
+      <form class="form-box project-search-form-box" >
+        <div class="form-container project-search-form-container">
+          <div class="input-group project-search-group">
+
+            <div class="input-container">
+              <label class="input-label" for="project_name"><i class="fa fa-solid fa-map"></i> Pesquisar projeto</label> 
+              <input class="input" type="text" name="project_name" id="project_name" required="true" minlength="3" maxlength="100">
+            </div>
+
+            <div class="input-container search-form-button-container" style="display: flex; align-items: end;">
+              <button class="main-button project-search-button">Pesquisar</button>
+            </div>
+
+          </div>
+          <div class="input-group" style="display: inline-block">
+
+            <label class="input-label-inline" for="nodejs">
+              <input type="checkbox" id="nodejs" name="" value="">
+              NodeJS 
+            </label>
+
+            <label class="input-label-inline" for="rust">
+              <input type="checkbox" id="rust" name="" value="">
+              Rust
+            </label>
+
+
+          </div>
+        </div>
+      </form>
+      </div>
+
     </main>
 
     <%- include("partials/footer") %>

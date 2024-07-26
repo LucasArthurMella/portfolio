@@ -129,6 +129,12 @@ body {
   margin-bottom: 10px;
 }
 
+.input-container-inline {
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .input {
   width: 100%;
   display:inline;
@@ -145,7 +151,7 @@ body {
 }
 
 .file {
-padding-top: 6px;
+  padding-top: 6px;
 }
 
 .input:focus {
@@ -166,6 +172,11 @@ padding-top: 6px;
 .input-label {
   width: 100%;
   display:block;
+  color: #00bfb3;
+  padding-bottom: 10px;
+}
+
+.input-label-inline {
   color: #00bfb3;
   padding-bottom: 10px;
 }

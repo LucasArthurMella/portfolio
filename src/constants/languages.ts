@@ -1,8 +1,7 @@
 
-export function generateText(language: "pt-BR" | "en-US"){
 
-  if(language == "pt-BR"){
-  let texts = {
+const global = {
+  ptPr: {
     title: "Lucas Mella | Desenvolvedor Backend",
     header: {
       allProjects: "Todos Projetos",
@@ -11,6 +10,25 @@ export function generateText(language: "pt-BR" | "en-US"){
       projects: "Projetos",
       contact: "Contato"
     },
+  },
+  enUs: {
+    title: "Lucas Mella | Backend Developer",
+    header: {
+      allProjects: "All Projects",
+      about: "About",
+      technologies: "Technologies",
+      projects: "Projects",
+      contact: "Contact"
+    },
+  }
+}
+
+
+export function generateTextHome(language: "pt-BR" | "en-US"){
+
+  if(language == "pt-BR"){
+  let texts = {
+    ...global.ptPr,
     about: {
       box1: {
         h2: "Olá, meu nome é",
@@ -47,14 +65,7 @@ export function generateText(language: "pt-BR" | "en-US"){
   return texts; 
   } else {
   let texts = {
-    title: "Lucas Mella | Backend Developer",
-    header: {
-      allProjects: "All Projects",
-      about: "About",
-      technologies: "Technologies",
-      projects: "Projects",
-      contact: "Contact"
-    },
+    ...global.enUs,
     about: {
       box1: {
         h2: "Hello, my name is",
@@ -90,6 +101,33 @@ export function generateText(language: "pt-BR" | "en-US"){
   
   return texts; 
   }
-
-
 }
+
+export function generateTextProjects(language: string) {
+
+  if(language == "pt-BR"){
+    let texts = {
+      ...global.ptPr,
+      projects: {
+        title: "Projetos"
+      }
+    }
+    return texts
+  }else {
+   let texts = {
+     ...global.enUs,
+     projects: {
+       title: "Projects"
+     }
+   }
+   return texts
+  }
+}
+
+
+
+
+
+
+
+
