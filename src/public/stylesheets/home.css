@@ -322,8 +322,6 @@
 }
 
 #contact-box-first-container-flex{
-  /*display: grid;*/
-  /*grid-template-columns: 1fr 1fr;*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -352,7 +350,6 @@
 .contact-box-anchor {
   font-size: 23px;
   height: 20%;
-  /*height: 80px;*/
   width: 100%;
   margin-top: 15px;
 }

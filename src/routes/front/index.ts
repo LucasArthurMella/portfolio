@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { generateTextHome, generateTextProjects } from "../../constants/languages";
+import { generateTextHome, generateTextProjects, generateTextSingleProject } from "../../constants/languages";
 import admRoutes from "./adm";
 import { technologyModel } from "../../models/technology";
 import { cvModel } from "../../models/cv";
@@ -43,6 +43,23 @@ router.get("/projects", async (req,res) => {
 
 });
 
+router.get("/projects/:id", async (req,res) => {
+
+  let lang = req.query.lang;
+  let treated_lang: "en-US" | "pt-BR";
+
+  if ((lang !== "en-US" && lang !== "pt-BR") || (lang == undefined || lang == "pt-BR")){
+    treated_lang = "pt-BR";
+  }else {
+    treated_lang = "en-US"
+  }
+
+  let texts = generateTextSingleProject(treated_lang);
+  let socials = await socialsModel.findOne({});
+  res.render("project", {lang: treated_lang, texts, socials });
+
+});
+  
 router.use("/", admRoutes);
 
 export default router;

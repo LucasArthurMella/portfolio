@@ -179,6 +179,7 @@ body {
 .input-label-inline {
   color: #00bfb3;
   padding-bottom: 10px;
+  display: inline-block;
 }
 
 .table {

@@ -125,6 +125,26 @@ export function generateTextProjects(language: string) {
 }
 
 
+export function generateTextSingleProject(language: string) {
+
+  if(language == "pt-BR"){
+    let texts = {
+      ...global.ptPr,
+      projects: {
+        title: "Projetos"
+      }
+    }
+    return texts
+  }else {
+   let texts = {
+     ...global.enUs,
+     projects: {
+       title: "Projects"
+     }
+   }
+   return texts
+  }
+}
 
 
 

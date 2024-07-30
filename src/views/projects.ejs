@@ -12,6 +12,8 @@
     @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
     <script src="https://kit.fontawesome.com/e269f9ec62.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   </head>
   <body>
     <%- include("partials/header") %>
@@ -28,7 +30,7 @@
           <div class="input-group project-search-group">
 
             <div class="input-container">
-              <label class="input-label" for="project_name"><i class="fa fa-solid fa-map"></i> Pesquisar projeto</label> 
+              <label class="input-label project-search-label" for="project_name"><i class="fa fa-solid fa-map"></i> Pesquisar projeto</label> 
               <input class="input" type="text" name="project_name" id="project_name" required="true" minlength="3" maxlength="100">
             </div>
 
@@ -37,27 +39,156 @@
             </div>
 
           </div>
-          <div class="input-group" style="display: inline-block">
-
+          <div class="input-group project-technologies">
+              <div class="project-technologies-title"><i class="fa fa-solid fa-microchip"></i> Selecionar Tecnologias</div>
             <label class="input-label-inline" for="nodejs">
+              <div class="project-search-technology-text">
               <input type="checkbox" id="nodejs" name="" value="">
               NodeJS 
+              </div>
             </label>
 
             <label class="input-label-inline" for="rust">
+              <div class="project-search-technology-text">
               <input type="checkbox" id="rust" name="" value="">
               Rust
+              </div>
             </label>
 
 
           </div>
         </div>
       </form>
+
+      
+
       </div>
 
+      <div id="project-box-container-flex">
+        <div id="project-box-container">
+
+        <div class="project-box">
+          <div class="selectable-text project-box-project-title">
+            <a href="" >agroloc</a>
+          </div>
+          <div class="project-box-images" >
+            <div>
+              <a data-fancybox href="/pictures/dynamic/ex1.png">
+                <img src="/pictures/dynamic/ex1.png">
+              </a>
+            </div>
+
+            <div>
+              <a data-fancybox href="/pictures/dynamic/ex2.png">
+                <img src="/pictures/dynamic/ex2.png">
+              </a>
+            </div>
+
+            <div>
+              <a data-fancybox href="/pictures/dynamic/ex3.png">
+                <img src="/pictures/dynamic/ex3.png">
+              </a>
+            </div>
+          </div>
+        </div> 
+
+
+        <div class="project-box">
+          <div class="selectable-text project-box-project-title">
+            <a href="" >projeto 2</a>
+          </div>
+          <div class="project-box-images">
+            <div>
+              <a data-fancybox href="/pictures/dynamic/ex1.png">
+                <img src="/pictures/dynamic/ex1.png">
+              </a>
+            </div>
+
+            <div>
+              <a data-fancybox href="/pictures/dynamic/ex2.png">
+                <img src="/pictures/dynamic/ex2.png">
+              </a>
+            </div>
+
+            <div>
+              <a data-fancybox href="/pictures/dynamic/ex3.png">
+                <img src="/pictures/dynamic/ex3.png">
+              </a>
+            </div>
+          </div>
+        </div> 
+
+
+        <div class="project-box">
+          <div class="selectable-text project-box-project-title">
+            <a href="" >projeto 3</a>
+          </div>
+          <div class="project-box-images">
+            <div>
+              <a data-fancybox href="/pictures/dynamic/ex1.png">
+                <img src="/pictures/dynamic/ex1.png">
+              </a>
+            </div>
+
+            <div>
+              <a data-fancybox href="/pictures/dynamic/ex2.png">
+                <img src="/pictures/dynamic/ex2.png">
+              </a>
+            </div>
+
+            <div>
+              <a data-fancybox href="/pictures/dynamic/ex3.png">
+                <img src="/pictures/dynamic/ex3.png">
+              </a>
+            </div>
+          </div>
+        </div> 
+
+
+        <div class="project-box">
+          <div class="selectable-text project-box-project-title">
+            <a href="" >projeto 4</a>
+          </div>
+          <div class="project-box-images">
+            <div>
+              <a data-fancybox href="/pictures/dynamic/ex1.png">
+                <img src="/pictures/dynamic/ex1.png">
+              </a>
+            </div>
+
+            <div>
+              <a data-fancybox href="/pictures/dynamic/ex2.png">
+                <img src="/pictures/dynamic/ex2.png">
+              </a>
+            </div>
+
+            <div>
+              <a data-fancybox href="/pictures/dynamic/ex3.png">
+                <img src="/pictures/dynamic/ex3.png">
+              </a>
+            </div>
+
+          </div>
+        </div> 
+        
+        </div> 
+      </div>
+
+      <div id="project-button-container-flex">
+
+        <div>
+          <button class="main-button" id="project-github-button">
+            <a href="<%=socials.github.url%>" target="_blank">
+              <i class="fa fa-brands fa-github"></i> github
+            </a>
+          </button>
+        </div>
+
+      </div>
     </main>
 
     <%- include("partials/footer") %>
-    <script type="module" src="header/bundle.js" ></script>
+    <script type="module" src="/header/bundle.js" ></script>
+    <script type="module" src="/projects/bundle.js" ></script>
   </body>
 </html>
