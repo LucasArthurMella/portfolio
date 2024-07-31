@@ -21,5 +21,79 @@
 /*=================*/
 
 
+/*===================*/
+/*PROJECT SHOWCASE START*/
+/*=================*/
 
+
+
+.project-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+
+.project-image-container {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  margin-top: 30px;
+  max-width: 100% !important;
+  min-width: 100% !important;
+}
+
+.main-image-container {
+  max-width: 90% !important;
+  min-width: 90% !important;
+}
+
+.main-slider-container{
+  max-width: 80% !important;
+  min-width: 80% !important;
+}
+
+.project-box-images {
+  max-width: 100% !important;
+  min-width: 100% !important;
+}
+
+
+.project-box-images-slider {
+  margin-top: 2%;
+  max-width: 100% !important;
+  min-width: 100% !important;
+}
+
+.slider-image-container {
+  margin-left: 0.2%;
+  margin-right: 0.2%;
+}
+
+.project-box-images img {
+  max-width: 100% !important;
+  min-width: 100% !important;
+  border-radius: 10px;
+}
+
+
+.project-box-images-slider img {
+
+  border-radius: 10px;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  cursor: pointer;
+}
+
+/*===================*/
+/*PROJECT SHOWCASE END*/
+/*=================*/
+
+
+
+@media (max-width: 768px){
+.project-showcase {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+}
 
