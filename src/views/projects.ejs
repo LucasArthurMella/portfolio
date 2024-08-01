@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title><%= texts.title %></title>
     <link rel="stylesheet" href="/stylesheets/partials/header.css">
     <link rel="stylesheet" href="/stylesheets/partials/footer.css">
+    <link rel="stylesheet" href="/stylesheets/partials/fixed-icons.css">
     <link rel="stylesheet" href="/stylesheets/global.css">
     <link rel="stylesheet" href="/stylesheets/projects.css">
     <style>
@@ -17,6 +18,7 @@
   </head>
   <body>
     <%- include("partials/header") %>
+    <%- include("partials/fixed-icons") %>
 
     <main id="main-container">
 
@@ -30,17 +32,17 @@
           <div class="input-group project-search-group">
 
             <div class="input-container">
-              <label class="input-label project-search-label" for="project_name"><i class="fa fa-solid fa-map"></i> Pesquisar projeto</label> 
+              <label class="input-label project-search-label" for="project_name"><i class="fa fa-solid fa-map"></i> <%=texts.projects.search.searchProjects%></label> 
               <input class="input" type="text" name="project_name" id="project_name" required="true" minlength="3" maxlength="100">
             </div>
 
             <div class="input-container search-form-button-container" style="display: flex; align-items: end;">
-              <button class="main-button project-search-button">Pesquisar</button>
+              <button class="main-button project-search-button"><%=texts.projects.search.searchButton%></button>
             </div>
 
           </div>
           <div class="input-group project-technologies">
-              <div class="project-technologies-title"><i class="fa fa-solid fa-microchip"></i> Selecionar Tecnologias</div>
+              <div class="project-technologies-title"><i class="fa fa-solid fa-microchip"></i> <%=texts.projects.search.selectCategories%></div>
             <label class="input-label-inline" for="nodejs">
               <div class="project-search-technology-text">
               <input type="checkbox" id="nodejs" name="" value="">
@@ -69,7 +71,7 @@
 
         <div class="project-box">
           <div class="selectable-text project-box-project-title">
-            <a href="" >agroloc</a>
+            <a href="/projects/3213123123?lang=<%=lang%>" >agroloc</a>
           </div>
           <div class="project-box-images" >
             <div>
@@ -95,7 +97,7 @@
 
         <div class="project-box">
           <div class="selectable-text project-box-project-title">
-            <a href="" >projeto 2</a>
+            <a href="/projects/3213123123?lang=<%=lang%>" >projeto 2</a>
           </div>
           <div class="project-box-images">
             <div>
@@ -121,7 +123,7 @@
 
         <div class="project-box">
           <div class="selectable-text project-box-project-title">
-            <a href="" >projeto 3</a>
+            <a href="/projects/3213123123?lang=<%=lang%>" >projeto 3</a>
           </div>
           <div class="project-box-images">
             <div>
@@ -147,7 +149,7 @@
 
         <div class="project-box">
           <div class="selectable-text project-box-project-title">
-            <a href="" >projeto 4</a>
+            <a href="/projects/3213123123?lang=<%=lang%>" >projeto 4</a>
           </div>
           <div class="project-box-images">
             <div>

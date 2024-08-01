@@ -8,6 +8,7 @@ import fs from "fs/promises";
 import path from "path";
 import { cvModel } from "../../models/cv";
 import { socialsModel } from "../../models/socials";
+import { categoryModel } from "../../models/category";
 
 const admRoutes = Router();
 
@@ -160,6 +161,40 @@ admRoutes.post("/adm/socials", async(req,res) => {
   }
   res.redirect("/adm/pages/single/socials")
 });
+
+
+admRoutes.post("/adm/category", async(req,res) => {
+  const name =  {
+    "pt-BR": req.body["name-pt-BR"],
+    "en-US": req.body["name-en-US"]
+  }
+  await categoryModel.create({name});
+  res.redirect("/adm/pages/category") 
+});
+
+admRoutes.patch("/adm/category/:id", async(req,res) => {
+  const name =  {
+    "pt-BR": req.body["name-pt-BR"],
+    "en-US": req.body["name-en-US"]
+  }
+
+  const id  = req.params.id;
+  let category = await categoryModel.findById(id);
+  if(category){
+    category.name = {...category.name, ...name};
+    await category.save();
+  }
+
+  res.redirect("/adm/pages/category") 
+});
+
+
+admRoutes.delete("/adm/category/:id", async(req,res) => {
+  await categoryModel.findByIdAndDelete(req.params.id);
+
+  res.redirect("/adm/pages/category") 
+});
+
 
 
 

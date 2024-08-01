@@ -9,6 +9,7 @@ import fs from "fs";
 import { technologyModel } from "../models/technology";
 import { cvModel } from "../models/cv";
 import { socialsModel } from "../models/socials";
+import { categoryModel } from "../models/category";
 
 let envVars = getEnv();
 
@@ -64,11 +65,17 @@ async function selectModelGetItems(page: string){
   if(page == "technology"){
     return await technologyModel.find({});
   }
+  else if (page == "category") {
+    return await categoryModel.find({});
+  }
 }
 
 async function selectModelFindItemById(page:string, id: string){
   if(page == "technology"){
     return await technologyModel.findById(id);
+  }
+  else if (page == "category") {
+    return await categoryModel.findById(id);
   }
 }
 

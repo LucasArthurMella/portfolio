@@ -1,0 +1,41 @@
+
+<div class="page-title">
+    <h1>All Technologies</h1> 
+    <hr>
+  </div>
+  <div class="form-box main-form-box">
+
+  <table class="table">
+    <thead>
+    <tr>
+        <th class="table-td">Portuguese Name</th>
+        <th class="table-td">English Name</th>
+        <th class="table-td">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(item of items) { %>
+        <tr>
+
+        <th class="table-td"><%=item.name["pt-BR"]%></th>
+        <th class="table-td"><%=item.name["en-US"]%></th>
+        <td class="table-td table-actions">
+          <div>
+            <a href="/adm/pages/category/<%= item._id%>">
+            <i class="fa fa-solid fa-edit"></i>
+          </a>
+          <span>-</span>
+          <form action="/api/adm/category/<%= item._id%>?_method=DELETE" method="POST">
+            <button type="submit">
+              <i class="fa fa-solid fa-trash"></i>
+            </button>
+          </form>
+
+          </div>
+        </td>
+        </tr>
+      <% }%>
+    </tbody>
+  </table>
+
+</div>  

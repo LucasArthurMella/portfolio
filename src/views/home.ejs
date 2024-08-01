@@ -12,19 +12,14 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <link rel="stylesheet" href="/stylesheets/partials/header.css">
     <link rel="stylesheet" href="/stylesheets/partials/footer.css">
+    <link rel="stylesheet" href="/stylesheets/partials/fixed-icons.css">
     <title><%= texts.title %></title>
   </head>
   <body>
   <div id="about"></div>
 
     <%- include("partials/header") %>
-
-    <div id="fixed-icons">
-      <div>
-        <a href="<%= socials.github.url%>" target="_blank"><i class="fa fa-brands fa-github"></i></a>
-        <a href="<%= socials.linkedin.url%>" target="_blank"><i class="fa fa-brands fa-linkedin"></i></a>
-      </div>
-    </div>
+    <%- include("partials/fixed-icons") %>
     
     <main id="main-container">
       <div id="about"></div>
@@ -199,7 +194,7 @@
       <div id="project-button-container-flex">
 
         <div>
-          <button class="main-button" id="project-button"><%= texts.projects.projectsButton %></button>
+          <a href="projects?lang=<%=lang%>" class="main-button" id="project-button"><%= texts.projects.projectsButton %></a>
         </div>
         
         <div>

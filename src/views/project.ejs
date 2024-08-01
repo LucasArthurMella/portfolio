@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title><%= texts.title %></title>
     <link rel="stylesheet" href="/stylesheets/partials/header.css">
     <link rel="stylesheet" href="/stylesheets/partials/footer.css">
+    <link rel="stylesheet" href="/stylesheets/partials/fixed-icons.css">
     <link rel="stylesheet" href="/stylesheets/global.css">
     <link rel="stylesheet" href="/stylesheets/project.css">
     <style>
@@ -17,6 +18,7 @@
   </head>
   <body>
     <%- include("partials/header") %>
+    <%- include("partials/fixed-icons") %>
 
     <main id="main-container">
 
@@ -33,7 +35,7 @@
                 <img src="/pictures/dynamic/ex2.png">
               </a>
 
-              <a data-fancybox href="/pictures/dynamic/ex3.png">
+              <a data-fancybox href="/pictures/dynamic/ex4.png">
                 <img src="/pictures/dynamic/ex4.png">
               </a>
 
@@ -45,7 +47,7 @@
                 <img src="/pictures/dynamic/ex2.png">
               </a>
 
-              <a data-fancybox href="/pictures/dynamic/ex3.png">
+              <a data-fancybox href="/pictures/dynamic/ex4.png">
                 <img src="/pictures/dynamic/ex4.png">
               </a>
           </div>
@@ -80,27 +82,35 @@
           </div>
           </div> 
 
+        </div>
 
-          <!--<div class="project-box">-->
-          <!--<div class="project-box-images" >-->
-          <!--    <a data-fancybox href="/pictures/dynamic/ex1.png">-->
-          <!--      <img src="/pictures/dynamic/ex1.png">-->
-          <!--    </a>-->
-          <!---->
-          <!--    <a data-fancybox href="/pictures/dynamic/ex2.png">-->
-          <!--      <img src="/pictures/dynamic/ex2.png">-->
-          <!--    </a>-->
-          <!---->
-          <!--    <a data-fancybox href="/pictures/dynamic/ex3.png">-->
-          <!--      <img src="/pictures/dynamic/ex3.png">-->
-          <!--    </a>-->
-          <!--</div>-->
-          <!--</div> -->
+
+
+        <div class="project-info-container">
+          <div class="project-info-title">
+            <h1>Agroloc</h1>  
+          </div>
+          <p class="project-info-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+        <div class="buttons-group">
+            
+          <div class="button-container">
+            <a class="main-button"><i class="fa fa-solid fa-link"></i> Link</a>
+          </div>
+
+          <div class="button-container">
+            <a class="main-button"><i class="fa fa-solid fa-paperclip"></i> <%= texts.projects.info.demonstrativeLink%></a>
+          </div>
+
+          <div class="button-container"> 
+            <a class="main-button"><i class="fa fa-solid fa-github"></i> <%= texts.projects.info.repository%></a>
+          </div>
 
 
         </div>
 
-        <div>aaaaaaaaaaaaaaa</div>
+        </div>
+
 
         </div>
 

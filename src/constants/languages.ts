@@ -109,7 +109,12 @@ export function generateTextProjects(language: string) {
     let texts = {
       ...global.ptPr,
       projects: {
-        title: "Projetos"
+        title: "Projetos",
+        search: {
+          searchProjects: "Pesquisar projeto",
+          selectCategories: "Selecionar categorias",
+          searchButton: "Pesquisar"
+        }
       }
     }
     return texts
@@ -117,7 +122,12 @@ export function generateTextProjects(language: string) {
    let texts = {
      ...global.enUs,
      projects: {
-       title: "Projects"
+       title: "Projects",
+        search: {
+          searchProjects: "Search projects",
+          selectCategories: "Select categories",
+          searchButton: "Search"
+        }
      }
    }
    return texts
@@ -131,7 +141,10 @@ export function generateTextSingleProject(language: string) {
     let texts = {
       ...global.ptPr,
       projects: {
-        title: "Projetos"
+        info:{
+          demonstrativeLink: "Link Demonstrativo",
+          repository: "Repositório"
+        }
       }
     }
     return texts
@@ -139,7 +152,10 @@ export function generateTextSingleProject(language: string) {
    let texts = {
      ...global.enUs,
      projects: {
-       title: "Projects"
+       info: {
+        demonstrativeLink: "Demonstrative Link",
+        repository: "Repository"
+      }
      }
    }
    return texts
