@@ -1,0 +1,65 @@
+
+  <div class="page-title">
+    <h1>Add Project</h1> 
+    <hr>
+  </div>
+
+  <form action="/api/adm/category" method="post" class="form-box main-form-box adm-form" >
+    <div class="form-container">
+      <div class="input-group">
+        <div class="input-container">
+          <label class="input-label" for="name-pt-br">Portuguese Name</label>
+          <input class="input" type="name-pt-br" name="name-pt-br" id="name-pt-br"> 
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="name-en-us">English Name</label>
+          <input class="input" type="name-en-us" name="name-en-us" id="name-en-us"> 
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="link">Link</label>
+          <input class="input" type="text" name="link" id="link"> 
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="demonstrative_link">Demonstrative Link</label>
+          <input class="input" type="text" name="demonstrative_link" id="demonstrative_link"> 
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="repository">Repository</label>
+          <input class="input" type="text" name="repository" id="repository"> 
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="description-pt-br">Portuguese Description</label>
+          <textarea class="input textarea" name="description-pt-br" id="description-pt-br" required="true" minlength="3" maxlength="1000"></textarea>
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="description-en-us">English Description</label>
+          <textarea class="input textarea" name="description-en-us" id="description-en-us" required="true" minlength="3" maxlength="1000"></textarea>
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="pictures">Pictures</label>
+          <input class="input file" type="file" name="pictures" multiple id="pictures"> 
+        </div>
+        <div class="input-container">
+
+          <label class="input-label">Categories</label>
+
+
+          <% for(item of items){ %>
+            <label class="input-label-inline" for="<%= item._id %>">
+              <div class="project-search-technology-text">
+                <input type="checkbox" id="<%= item._id %>" name="categories" value="<%= item._id %>">
+              <%= item.name["en-US"] %>
+              </div>
+            </label>
+          <% } %>
+
+          </div>
+      </div>
+
+    <div class="input-group">
+      <button class="main-button ml-0">Create</button>
+    </div>
+
+    </div>
+
+  </form>      

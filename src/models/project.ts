@@ -2,7 +2,6 @@
 import mongoose, { HydratedDocument } from "mongoose";
 import { Category } from "./category";
 
-
 interface IProject extends Document {
   pictures: string[];
   link: string;
@@ -17,7 +16,6 @@ interface IProject extends Document {
     "en-US": string;
   },
   categories: Category[] | mongoose.ObjectId; 
-  
 }
 
 const projectSchema = new mongoose.Schema<IProject>({

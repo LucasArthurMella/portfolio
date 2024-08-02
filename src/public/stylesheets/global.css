@@ -160,12 +160,9 @@ body {
 }
 
 .textarea {
-  height: 180px;
-  min-height: 180px;
-  max-height: 320px;
-  min-width: 100%;
-  max-width: 100%;
-  resize: both;
+  min-height: 100px;
+  max-height: 200px;
+  resize: vertical;
   padding-top: 5px;
 }
 

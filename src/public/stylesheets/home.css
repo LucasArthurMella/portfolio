@@ -355,6 +355,11 @@
   width: 95%;
 }
 
+#stm_message {
+  min-height: 180px !important;
+  max-height: 320px !important;
+}
+
 
 /*================*/
 /*CONTACT BOX END*/

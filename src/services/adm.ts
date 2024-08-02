@@ -10,6 +10,7 @@ import { technologyModel } from "../models/technology";
 import { cvModel } from "../models/cv";
 import { socialsModel } from "../models/socials";
 import { categoryModel } from "../models/category";
+import { projectModel } from "../models/project";
 
 let envVars = getEnv();
 
@@ -43,14 +44,22 @@ export function findAndLoadPage(req: Request, res: Response, action: string) {
       res.redirect("/adm/pages");
     }else{
 
+      if(action=="new"){
+        let items = await handleNew(req.params.page);
+        if(items){
+          res.render("adm/main", { see: req.params.page, action: action, items});
+        }else{
+          res.render("adm/main", { see: req.params.page, action: action});
+        }
+      }
       if(action=="list"){
-        let items = await selectModelGetItems(req.params.page);
+        let items = await handleList(req.params.page);
         res.render("adm/main", { see: req.params.page, action: action, items});
       } else if (action == "edit"){
-        let item = await selectModelFindItemById(req.params.page, req.params.id);
+        let item = await handleEdit(req.params.page, req.params.id);
         res.render("adm/main", { see: req.params.page, action: action, item});
       } else if(action == "single"){
-        let item = await selectModelSingle(req.params.page);
+        let item = await handleSingle(req.params.page);
         res.render("adm/main", { see: req.params.page, action: action, item});
       }else{
         res.render("adm/main", { see: req.params.page, action: action});
@@ -61,16 +70,25 @@ export function findAndLoadPage(req: Request, res: Response, action: string) {
 
 }
 
-async function selectModelGetItems(page: string){
+async function handleNew(page: string){
+  if(page == "project"){
+    return await categoryModel.find({});
+  }
+}
+
+async function handleList(page: string){
   if(page == "technology"){
     return await technologyModel.find({});
   }
   else if (page == "category") {
     return await categoryModel.find({});
   }
+  else if (page == "project") {
+    return await projectModel.find({});
+  }
 }
 
-async function selectModelFindItemById(page:string, id: string){
+async function handleEdit(page:string, id: string){
   if(page == "technology"){
     return await technologyModel.findById(id);
   }
@@ -79,7 +97,7 @@ async function selectModelFindItemById(page:string, id: string){
   }
 }
 
-async function selectModelSingle(page: string) {
+async function handleSingle(page: string) {
   if(page == "cv"){
     return await cvModel.findOne({});
   }else if (page=="socials"){
