@@ -1,20 +1,73 @@
-
   <div class="page-title">
-    <h1>Edit Category</h1> 
+    <h1>Edit Project</h1> 
     <hr>
   </div>
 
-  <form action="/api/adm/category/<%= item._id%>?_method=PATCH" method="post" class="form-box main-form-box adm-form" >
+  <form action="/api/adm/project/<%=item.project._id%>?_method=PATCH" method="post" class="form-box main-form-box adm-form" enctype="multipart/form-data">
     <div class="form-container">
       <div class="input-group">
         <div class="input-container">
-          <label class="input-label" for="name-pt-BR">Portuguese Name</label>
-          <input class="input" value="<%=item.name["pt-BR"]%>" type="text" name="name-pt-BR" id="name-pt-BR"> 
+          <label class="input-label" for="name-pt-br">Portuguese Name</label>
+          <input class="input" value="<%= item.project.name["pt-BR"]%>" type="name-pt-br" name="name-pt-br" id="name-pt-br"> 
         </div> 
         <div class="input-container">
-          <label class="input-label" for="name-en-US">English Name</label>
-          <input class="input" value="<%=item.name["en-US"]%>" type="text" name="name-en-US" id="name-en-US"> 
+          <label class="input-label" for="name-en-us">English Name</label>
+          <input class="input" value="<%= item.project.name["en-US"]%>" type="name-en-us" name="name-en-us" id="name-en-us"> 
         </div> 
+        <div class="input-container">
+          <label class="input-label" for="link">Link</label>
+          <input class="input" value="<%= item.project.link%>" type="text" name="link" id="link"> 
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="demonstrative_link">Demonstrative Link</label>
+          <input class="input" value="<%= item.project.demonstrative_link%>" type="text" name="demonstrative_link" id="demonstrative_link"> 
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="repository">Repository</label>
+          <input class="input" value="<%= item.project.repository%>" type="text" name="repository" id="repository"> 
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="description-pt-br">Portuguese Description</label>
+          <textarea class="input textarea"  name="description-pt-br" id="description-pt-br" required="true" minlength="3" maxlength="1000"><%= item.project.description["pt-BR"]%></textarea>
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="description-en-us">English Description</label>
+          <textarea class="input textarea"  name="description-en-us" id="description-en-us" required="true" minlength="3" maxlength="1000"><%= item.project.description["en-US"]%></textarea>
+        </div> 
+        <div class="input-container">
+          <label class="input-label" for="pictures">Pictures</label>
+          <input class="input file" type="file" name="pictures" multiple id="pictures"> 
+        </div>
+
+        <% for (picture of item.project.pictures){ %>
+        <div class="project-picture-block">
+          <img class="project-picture" src="/pictures/dynamic/project/<%= picture %>" alt="">
+          <a href="/api/adm/project/<%=item.project._id%>/<%=picture%>" class="project-picture-anchor"><i class="fa fa-solid fa-times-circle"></i></a>
+        </div>
+        <% } %>
+
+
+
+        <div class="input-container">
+
+          <label class="input-label">Categories</label>
+
+
+          <% for(registered_category of item.registered_categories){ %>
+            <label class="input-label-inline" for="<%= registered_category._id %>">
+              <div class="project-search-technology-text">
+                <input type="checkbox" id="<%= registered_category._id %>" name="categories" value="<%= registered_category._id %>"
+                <% 
+                if(item.project.categories.includes(registered_category._id)){ %>
+                 checked="checked" 
+                <% } %>
+                >
+              <%= registered_category.name["en-US"] %>
+              </div>
+            </label>
+          <% } %>
+
+          </div>
       </div>
 
     <div class="input-group">
@@ -23,4 +76,8 @@
 
     </div>
 
-  </form>      
+  </form>
+
+
+
+  <script type="module" src="/project_edit/bundle.js"></script>

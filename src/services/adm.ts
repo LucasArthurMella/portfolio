@@ -43,26 +43,25 @@ export function findAndLoadPage(req: Request, res: Response, action: string) {
       console.log(action);
       res.redirect("/adm/pages");
     }else{
-
+      let cssExists = await checkCssExistence(req.params.page, action);
       if(action=="new"){
         let items = await handleNew(req.params.page);
         if(items){
-          res.render("adm/main", { see: req.params.page, action: action, items});
+          res.render("adm/main", { see: req.params.page, action: action, items, cssExists});
         }else{
-          res.render("adm/main", { see: req.params.page, action: action});
+          res.render("adm/main", { see: req.params.page, action: action, cssExists});
         }
-      }
-      if(action=="list"){
+      } else if(action=="list"){
         let items = await handleList(req.params.page);
-        res.render("adm/main", { see: req.params.page, action: action, items});
+        res.render("adm/main", { see: req.params.page, action: action, items, cssExists});
       } else if (action == "edit"){
         let item = await handleEdit(req.params.page, req.params.id);
-        res.render("adm/main", { see: req.params.page, action: action, item});
+        res.render("adm/main", { see: req.params.page, action: action, item, cssExists});
       } else if(action == "single"){
         let item = await handleSingle(req.params.page);
-        res.render("adm/main", { see: req.params.page, action: action, item});
+        res.render("adm/main", { see: req.params.page, action: action, item, cssExists});
       }else{
-        res.render("adm/main", { see: req.params.page, action: action});
+        res.render("adm/main", { see: req.params.page, action: action, cssExists});
       }
 
     }
@@ -95,6 +94,11 @@ async function handleEdit(page:string, id: string){
   else if (page == "category") {
     return await categoryModel.findById(id);
   }
+  else if (page == "project") {
+    let project = await projectModel.findById(id);
+    let registered_categories = await categoryModel.find({});
+    return {project, registered_categories};
+  }
 }
 
 async function handleSingle(page: string) {
@@ -105,5 +109,14 @@ async function handleSingle(page: string) {
   }
 }
 
+async function checkCssExistence(page:string, action: string){
+  const filePath = path.join(__dirname, `../public/stylesheets/adm/pages/${page}/${action}.css`);
+  let cssExists = false;
+  try{
+    await fs.promises.access(filePath);
+    cssExists = true;
+  }catch{}
 
+  return cssExists;
+}
 

@@ -1,0 +1,16 @@
+.project-picture-block {
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.project-picture {
+  max-width: 100px;
+}
+
+.project-picture-anchor{
+  font-size: 30px;
+  display: block;
+  transform: translate(-15px, -20px);
+  color: red;
+  cursor: pointer;
+}

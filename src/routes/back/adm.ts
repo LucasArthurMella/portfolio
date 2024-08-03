@@ -9,8 +9,13 @@ import path from "path";
 import { cvModel } from "../../models/cv";
 import { socialsModel } from "../../models/socials";
 import { categoryModel } from "../../models/category";
+import { projectModel } from "../../models/project";
+import { Category } from "../../models/category";
+import { left } from "fp-ts/lib/EitherT";
+import { Schema } from "mongoose";
 
 const admRoutes = Router();
+const imageUrl = "src/public/pictures/dynamic/";
 
 admRoutes.post("/confirm-login", async (req,res) => {
 
@@ -40,8 +45,20 @@ admRoutes.get("/check-token", async (req,res) => {
   })
 });
 
-const imageUrl = "src/public/pictures/dynamic/";
-const uploadTechnology = multer({dest: imageUrl + "technology"});
+
+
+const technologyStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, imageUrl + "technology");
+  },
+  filename: function (req, file, cb) {
+    const originalName = path.parse(file.originalname).name;
+    cb(null, Date.now() + originalName+".png");
+  }
+});
+
+//const uploadTechnology = multer({dest: imageUrl + "technology"});
+const uploadTechnology = multer({storage: technologyStorage});
 
 admRoutes.post("/adm/technology", uploadTechnology.single("image_url"), async (req, res) => {
   let postObject = {name: req.body.name, image_url: req.file?.filename};
@@ -78,20 +95,20 @@ admRoutes.delete("/adm/technology/:id", uploadTechnology.single("image_url"), as
 });
 
 
-const cvsUrl = "src/public/documents/dynamic/";
+const documentsUrl = "src/public/documents/dynamic/";
 
-const storage = multer.diskStorage({
+const cvsStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, cvsUrl + "cv");
+    cb(null, documentsUrl + "cv");
   },
   filename: function (req, file, cb) {
     const originalName = path.parse(file.originalname).name;
-    cb(null, `${originalName}.pdf`);
+    cb(null, Date.now() + originalName+".pdf");
   }
 });
 
 //const uploadCv = multer({dest: cvsUrl + "cv"});
-const uploadCv = multer({storage});
+const uploadCv = multer({storage: cvsStorage});
 admRoutes.post("/adm/cv", uploadCv.fields([{name:"cv_portuguese"},{name: "cv_english"}]), async(req,res) => {
   const documents = req.files as {
     [fieldname: string]: Express.Multer.File[];
@@ -102,7 +119,7 @@ admRoutes.post("/adm/cv", uploadCv.fields([{name:"cv_portuguese"},{name: "cv_eng
 
     if(documents?.cv_portuguese){
       if(cvItem.cv_portuguese_url){
-        let documentPath = path.join(__dirname, "../../../"+cvsUrl+"cv/"+cvItem.cv_portuguese_url);
+        let documentPath = path.join(__dirname, "../../../"+documentsUrl+"cv/"+cvItem.cv_portuguese_url);
         await fs.unlink(documentPath);
       }
       cvItem.cv_portuguese_url = documents.cv_portuguese[0].filename;
@@ -110,7 +127,7 @@ admRoutes.post("/adm/cv", uploadCv.fields([{name:"cv_portuguese"},{name: "cv_eng
 
     if(documents?.cv_english){
       if(cvItem.cv_english_url){
-        let documentPath = path.join(__dirname, "../../../"+cvsUrl+"cv/"+cvItem.cv_english_url);
+        let documentPath = path.join(__dirname, "../../../"+documentsUrl+"cv/"+cvItem.cv_english_url);
         await fs.unlink(documentPath);
       }
       cvItem.cv_english_url = documents.cv_english[0].filename;
@@ -190,14 +207,123 @@ admRoutes.patch("/adm/category/:id", async(req,res) => {
 
 
 admRoutes.delete("/adm/category/:id", async(req,res) => {
-  await categoryModel.findByIdAndDelete(req.params.id);
+  let projectsWithCategory = await projectModel.find({categories: req.params.id});
+  let x: number | string = 2;
 
+  for(let project of projectsWithCategory){
+    let leftOverCategories = project?.categories.filter(i => i.toString() != req.params.id);
+    project.categories = leftOverCategories as typeof project.categories;
+    await project.save();
+  }
+
+
+  await categoryModel.findByIdAndDelete(req.params.id);
   res.redirect("/adm/pages/category") 
 });
 
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, imageUrl + "project"); // Folder where the files will be stored
+    },
+    filename: (req, file, cb) => {
+        const originalName = path.parse(file.originalname).name;
+        cb(null, Date.now() + originalName+".png"); // Generate unique file name
+    }
+});
+
+const uploadProject = multer({storage});
+admRoutes.post("/adm/project", uploadProject.array("pictures"), async(req,res) => {
+  let projectObject = {
+    pictures: [] as string[],
+    link: req.body.link,
+    demonstrative_link: req.body.demonstrative_link,
+    repository: req.body.repository,
+    name: {
+      "pt-BR": req.body["name-pt-br"],
+      "en-US": req.body["name-en-us"]
+    },
+    description: {
+      "pt-BR": req.body["description-pt-br"],
+      "en-US": req.body["description-en-us"]
+    },
+    categories: req.body.categories 
+  }
+
+  if(req.files){
+    if(Array.isArray(req.files)){ 
+      req.files.forEach((item) => {
+        projectObject.pictures.push(item.filename);
+      });
+    }
+  }
+
+  await projectModel.create(projectObject);
+  res.redirect("/adm/pages/project");
+});
+
+
+admRoutes.delete("/adm/project/:id", uploadProject.array("pictures"), async(req,res) => {
+  let project = await projectModel.findByIdAndDelete(req.params.id);
+
+  if(project){
+    for (let picture of project.pictures){
+      let imagePath = path.join(__dirname, "../../../"+imageUrl+"project/"+picture);
+      let file = await fs.unlink(imagePath);
+    }
+  }
+
+  res.redirect("/adm/pages/project");
+});
+
+
+admRoutes.delete("/adm/project/:id/:picture_id", uploadProject.array("pictures"), async(req,res) => {
+
+  let project = await projectModel.findById(req.params.id);
+  if(project){
+    let imagePath = path.join(__dirname, "../../../"+imageUrl+"project/"+req.params.picture_id);
+    let file = await fs.unlink(imagePath);
+    project.pictures = project?.pictures.filter(i => i != req.params.picture_id);
+    await project.save();
+  }
+
+  res.redirect("/adm/pages/project/"+req.params.id);
+});
+
+admRoutes.patch("/adm/project/:id", uploadProject.array("pictures"), async(req,res) => {
+  
+  let project = await projectModel.findById(req.params.id);
+ 
+  let projectObject = {
+    pictures: project?.pictures,
+    link: req.body.link,
+    demonstrative_link: req.body.demonstrative_link,
+    repository: req.body.repository,
+    name: {
+      "pt-BR": req.body["name-pt-br"],
+      "en-US": req.body["name-en-us"]
+    },
+    description: {
+      "pt-BR": req.body["description-pt-br"],
+      "en-US": req.body["description-en-us"]
+    },
+    categories: req.body.categories 
+  }
+
+  if(req.files){
+    if(Array.isArray(req.files)){ 
+      req.files.forEach((item) => {
+        projectObject.pictures?.push(item.filename);
+      });
+    }
+  }
+
+  await projectModel.findByIdAndUpdate(req.params.id, projectObject);
+  res.redirect("/adm/pages/project");
+
+})
 
 
 
-
+  
 
 export default admRoutes;

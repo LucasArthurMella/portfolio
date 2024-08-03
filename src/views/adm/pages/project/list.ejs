@@ -1,7 +1,7 @@
 
 
 <div class="page-title">
-    <h1>All Categories</h1> 
+    <h1>All Projects</h1> 
     <hr>
   </div>
   <div class="form-box main-form-box">
@@ -9,24 +9,26 @@
   <table class="table">
     <thead>
     <tr>
-        <th class="table-td">Portuguese Name</th>
         <th class="table-td">English Name</th>
+        <th class="table-td">English Description</th>
+        <th class="table-td">First Image</th>
         <th class="table-td">Actions</th>
-      </tr>
+    </tr>
     </thead>
     <tbody>
       <% for(item of items) { %>
         <tr>
-
-        <th class="table-td"><%=item.name["pt-BR"]%></th>
         <th class="table-td"><%=item.name["en-US"]%></th>
+        <th class="table-td"><%=item.description["en-US"]%></th>
+        <th class="table-td"><img style="max-width:100px;" src="/pictures/dynamic/project/<%=item.pictures[0]%>"></th>
+
         <td class="table-td table-actions">
           <div>
-            <a href="/adm/pages/category/<%= item._id%>">
+            <a href="/adm/pages/project/<%= item._id%>">
             <i class="fa fa-solid fa-edit"></i>
           </a>
           <span>-</span>
-          <form action="/api/adm/category/<%= item._id%>?_method=DELETE" method="POST">
+          <form action="/api/adm/project/<%= item._id%>?_method=DELETE" method="POST">
             <button type="submit">
               <i class="fa fa-solid fa-trash"></i>
             </button>

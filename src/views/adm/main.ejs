@@ -6,6 +6,9 @@
     <title>Lucas Mella ADM</title>
     <link rel="stylesheet" href="/stylesheets/global.css">
     <link rel="stylesheet" href="/stylesheets/adm/main.css">
+    <% if(see != "none" && cssExists){ %>
+      <link rel="stylesheet" href="/stylesheets/adm/pages/<%=see%>/<%=action%>.css">
+    <% } %>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
@@ -199,5 +202,6 @@
 
 
     <script type="module" src="/adm-pages/bundle.js"></script>
+    <script type="module" src="/project/bundle.js"></script>
   </body>
 </html>

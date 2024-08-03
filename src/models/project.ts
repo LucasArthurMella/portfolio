@@ -5,7 +5,7 @@ import { Category } from "./category";
 interface IProject extends Document {
   pictures: string[];
   link: string;
-  demonstrativeLink: string;
+  demonstrative_link: string;
   repository: string;
   name: {
     "pt-BR": string;
@@ -15,13 +15,13 @@ interface IProject extends Document {
     "pt-BR": string;
     "en-US": string;
   },
-  categories: Category[] | mongoose.ObjectId; 
+  categories: Category[] | mongoose.Schema.Types.ObjectId[]; 
 }
 
 const projectSchema = new mongoose.Schema<IProject>({
   pictures: {type: [String]},
   link: {type: String},
-  demonstrativeLink: {type: String},
+  demonstrative_link: {type: String},
   repository: {type: String},
   name: {
     "pt-BR": {type: String},
