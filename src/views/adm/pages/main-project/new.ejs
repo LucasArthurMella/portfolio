@@ -1,0 +1,25 @@
+  <div class="page-title">
+    <h1>Add Main Project</h1> 
+    <hr>
+  </div>
+
+  <form action="/api/adm/main-project" method="post" class="form-box main-form-box adm-form" >
+    <div class="form-container">
+      <div class="input-group">
+        <div class="input-container">
+          <label class="input-label" for="project">Select Project</label>
+          <select class="input" name="project">
+            <% for(let item of items){ %>
+            <option value="<%=item._id%>"><%=item.name["en-US"]%></option>
+            <% } %>
+          </select>
+        </div> 
+      </div>
+
+    <div class="input-group">
+      <button class="main-button ml-0">Create</button>
+    </div>
+
+    </div>
+
+  </form>      

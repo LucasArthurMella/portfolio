@@ -11,6 +11,7 @@ import { cvModel } from "../models/cv";
 import { socialsModel } from "../models/socials";
 import { categoryModel } from "../models/category";
 import { projectModel } from "../models/project";
+import { mainProjectModel } from "../models/main-project";
 
 let envVars = getEnv();
 
@@ -73,11 +74,17 @@ async function handleNew(page: string){
   if(page == "project"){
     return await categoryModel.find({});
   }
+  else if (page == "main-project"){
+    return await projectModel.find({});
+  }
 }
 
 async function handleList(page: string){
   if(page == "technology"){
     return await technologyModel.find({});
+  }
+  else if (page == "main-project"){
+    return await mainProjectModel.find({}).populate("project");
   }
   else if (page == "category") {
     return await categoryModel.find({});
@@ -91,6 +98,13 @@ async function handleEdit(page:string, id: string){
   if(page == "technology"){
     return await technologyModel.findById(id);
   }
+  else if (page == "main-project") {
+    let projects = await projectModel.find();
+    let main_project = await mainProjectModel.findById(id);
+
+    return {projects, main_project}
+  }
+
   else if (page == "category") {
     return await categoryModel.findById(id);
   }

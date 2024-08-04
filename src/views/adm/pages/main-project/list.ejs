@@ -1,0 +1,42 @@
+<div class="page-title">
+    <h1>All Main Projects</h1> 
+    <hr>
+  </div>
+  <div class="form-box main-form-box">
+
+  <table class="table">
+    <thead>
+    <tr>
+        <th class="table-td">English Name</th>
+        <th class="table-td">English Description</th>
+        <th class="table-td">First Image</th>
+        <th class="table-td">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% for(item of items) { %>
+        <tr>
+        <th class="table-td"><%=item.project.name["en-US"]%></th>
+        <th class="table-td"><%=item.project.description["en-US"]%></th>
+        <th class="table-td"><img style="max-width:100px;" src="/pictures/dynamic/project/<%=item.project.pictures[0]%>"></th>
+
+        <td class="table-td table-actions">
+          <div>
+            <a href="/adm/pages/main-project/<%= item._id%>">
+            <i class="fa fa-solid fa-edit"></i>
+          </a>
+          <span>-</span>
+          <form action="/api/adm/main-project/<%= item._id%>?_method=DELETE" method="POST">
+            <button type="submit">
+              <i class="fa fa-solid fa-trash"></i>
+            </button>
+          </form>
+
+          </div>
+        </td>
+        </tr>
+      <% }%>
+    </tbody>
+  </table>
+
+</div>  

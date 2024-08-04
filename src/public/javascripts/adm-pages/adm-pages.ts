@@ -21,6 +21,21 @@ export function admPages(){
     })
   });
 
+  let forms = document.querySelectorAll("form");
+
+  const localStorageValue = localStorage.getItem('token')!;
+  for(let form of forms){
+    //const hiddenInput = document.createElement('input');
+    //hiddenInput.type = 'hidden';
+    //hiddenInput.name="token"
+    //hiddenInput.value = localStorageValue;
+    //form.appendChild(hiddenInput);
+    const actionUrl = new URL(form.action);
+    actionUrl.searchParams.append("token", localStorageValue);
+    form.action = actionUrl.href
+  }
+
+
   
 }
 

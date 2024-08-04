@@ -13,6 +13,8 @@ import { projectModel } from "../../models/project";
 import { Category } from "../../models/category";
 import { left } from "fp-ts/lib/EitherT";
 import { Schema } from "mongoose";
+import { mainProjectModel } from "../../models/main-project";
+import { authenticateJwt } from "../../middlewares/auth";
 
 const admRoutes = Router();
 const imageUrl = "src/public/pictures/dynamic/";
@@ -60,7 +62,7 @@ const technologyStorage = multer.diskStorage({
 //const uploadTechnology = multer({dest: imageUrl + "technology"});
 const uploadTechnology = multer({storage: technologyStorage});
 
-admRoutes.post("/adm/technology", uploadTechnology.single("image_url"), async (req, res) => {
+admRoutes.post("/adm/technology", authenticateJwt, uploadTechnology.single("image_url"), async (req, res) => {
   let postObject = {name: req.body.name, image_url: req.file?.filename};
   await technologyModel.create(postObject);
   res.redirect(("/adm/pages/technology"));
@@ -69,7 +71,7 @@ admRoutes.post("/adm/technology", uploadTechnology.single("image_url"), async (r
   //console.log(req.file);
 });
 
-admRoutes.patch("/adm/technology/:id", uploadTechnology.single("image_url"), async (req, res) => {
+admRoutes.patch("/adm/technology/:id", authenticateJwt, uploadTechnology.single("image_url"), async (req, res) => {
   let technology = await technologyModel.findById(req.params.id);
 
   if(technology){
@@ -85,7 +87,7 @@ admRoutes.patch("/adm/technology/:id", uploadTechnology.single("image_url"), asy
 });
 
 
-admRoutes.delete("/adm/technology/:id", uploadTechnology.single("image_url"), async (req, res) => {
+admRoutes.delete("/adm/technology/:id", authenticateJwt, uploadTechnology.single("image_url"), async (req, res) => {
   let technology = await technologyModel.findByIdAndDelete(req.params.id);
   if(technology){
     let imagePath = path.join(__dirname, "../../../"+imageUrl+"technology/"+technology.image_url);
@@ -109,7 +111,7 @@ const cvsStorage = multer.diskStorage({
 
 //const uploadCv = multer({dest: cvsUrl + "cv"});
 const uploadCv = multer({storage: cvsStorage});
-admRoutes.post("/adm/cv", uploadCv.fields([{name:"cv_portuguese"},{name: "cv_english"}]), async(req,res) => {
+admRoutes.post("/adm/cv", authenticateJwt, uploadCv.fields([{name:"cv_portuguese"},{name: "cv_english"}]), async(req,res) => {
   const documents = req.files as {
     [fieldname: string]: Express.Multer.File[];
   };
@@ -155,7 +157,7 @@ admRoutes.post("/adm/cv", uploadCv.fields([{name:"cv_portuguese"},{name: "cv_eng
 
 });
 
-admRoutes.post("/adm/socials", async(req,res) => {
+admRoutes.post("/adm/socials", authenticateJwt, async(req,res) => {
   let socials = await socialsModel.findOne({});
   let reqObject = {
     email: req.body.email,
@@ -180,7 +182,32 @@ admRoutes.post("/adm/socials", async(req,res) => {
 });
 
 
-admRoutes.post("/adm/category", async(req,res) => {
+admRoutes.post("/adm/main-project", authenticateJwt, async(req,res) => {
+  let mainProjectObject = {
+    project: req.body.project
+  }
+
+  await mainProjectModel.create(mainProjectObject);
+  res.redirect("/adm/pages/main-project") 
+});
+
+admRoutes.patch("/adm/main-project/:id", authenticateJwt, async(req,res) => {
+  let mainProjectObject = {
+    project: req.body.project
+  }
+
+  await mainProjectModel.findByIdAndUpdate(req.params.id, mainProjectObject)
+  res.redirect("/adm/pages/main-project") 
+});
+
+
+admRoutes.delete("/adm/main-project/:id", authenticateJwt, async(req,res) => {
+
+  await mainProjectModel.findByIdAndDelete(req.params.id);
+  res.redirect("/adm/pages/main-project") 
+});
+
+admRoutes.post("/adm/category", authenticateJwt, async(req,res) => {
   const name =  {
     "pt-BR": req.body["name-pt-BR"],
     "en-US": req.body["name-en-US"]
@@ -189,7 +216,7 @@ admRoutes.post("/adm/category", async(req,res) => {
   res.redirect("/adm/pages/category") 
 });
 
-admRoutes.patch("/adm/category/:id", async(req,res) => {
+admRoutes.patch("/adm/category/:id", authenticateJwt, async(req,res) => {
   const name =  {
     "pt-BR": req.body["name-pt-BR"],
     "en-US": req.body["name-en-US"]
@@ -206,7 +233,7 @@ admRoutes.patch("/adm/category/:id", async(req,res) => {
 });
 
 
-admRoutes.delete("/adm/category/:id", async(req,res) => {
+admRoutes.delete("/adm/category/:id", authenticateJwt, async(req,res) => {
   let projectsWithCategory = await projectModel.find({categories: req.params.id});
   let x: number | string = 2;
 
@@ -232,7 +259,7 @@ const storage = multer.diskStorage({
 });
 
 const uploadProject = multer({storage});
-admRoutes.post("/adm/project", uploadProject.array("pictures"), async(req,res) => {
+admRoutes.post("/adm/project", authenticateJwt, uploadProject.array("pictures"), async(req,res) => {
   let projectObject = {
     pictures: [] as string[],
     link: req.body.link,
@@ -262,8 +289,13 @@ admRoutes.post("/adm/project", uploadProject.array("pictures"), async(req,res) =
 });
 
 
-admRoutes.delete("/adm/project/:id", uploadProject.array("pictures"), async(req,res) => {
+admRoutes.delete("/adm/project/:id", authenticateJwt, async(req,res) => {
   let project = await projectModel.findByIdAndDelete(req.params.id);
+
+  let relatedMainProjects = await mainProjectModel.find({project: req.params.id});
+  for (let relatedMainProject of relatedMainProjects){
+    await mainProjectModel.findByIdAndDelete(relatedMainProject._id);
+  }
 
   if(project){
     for (let picture of project.pictures){
@@ -276,7 +308,7 @@ admRoutes.delete("/adm/project/:id", uploadProject.array("pictures"), async(req,
 });
 
 
-admRoutes.delete("/adm/project/:id/:picture_id", uploadProject.array("pictures"), async(req,res) => {
+admRoutes.delete("/adm/project/:id/:picture_id", authenticateJwt, uploadProject.array("pictures"), async(req,res) => {
 
   let project = await projectModel.findById(req.params.id);
   if(project){
@@ -289,7 +321,7 @@ admRoutes.delete("/adm/project/:id/:picture_id", uploadProject.array("pictures")
   res.redirect("/adm/pages/project/"+req.params.id);
 });
 
-admRoutes.patch("/adm/project/:id", uploadProject.array("pictures"), async(req,res) => {
+admRoutes.patch("/adm/project/:id", authenticateJwt, uploadProject.array("pictures"), async(req,res) => {
   
   let project = await projectModel.findById(req.params.id);
  
