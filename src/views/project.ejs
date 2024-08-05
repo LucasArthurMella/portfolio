@@ -22,68 +22,32 @@
 
     <main id="main-container">
 
+      <% if(project) { %>
         <div class="project-showcase">
         <div class="project-image-container">
 
           <div class="main-image-container">
-          <div class="project-box-images">
-              <a data-fancybox href="/pictures/dynamic/ex1.png">
-                <img src="/pictures/dynamic/ex1.png">
-              </a>
-
-              <a data-fancybox href="/pictures/dynamic/ex2.png">
-                <img src="/pictures/dynamic/ex2.png">
-              </a>
-
-              <a data-fancybox href="/pictures/dynamic/ex4.png">
-                <img src="/pictures/dynamic/ex4.png">
-              </a>
-
-              <a data-fancybox href="/pictures/dynamic/ex1.png">
-                <img src="/pictures/dynamic/ex1.png">
-              </a>
-
-              <a data-fancybox href="/pictures/dynamic/ex2.png">
-                <img src="/pictures/dynamic/ex2.png">
-              </a>
-
-              <a data-fancybox href="/pictures/dynamic/ex4.png">
-                <img src="/pictures/dynamic/ex4.png">
-              </a>
-          </div>
+            <div class="project-box-images">
+              <% for(let picture of project.pictures){ %>
+                <a data-fancybox href="/pictures/dynamic/project/<%=picture%>">
+                  <img src="/pictures/dynamic/project/<%=picture%>">
+                </a>
+              <% } %>
+            </div>
           </div> 
 
 
           <div class="main-slider-container">
-          <div class="project-box-images-slider" >
-            <div class="slider-image-container">
-                <img src="/pictures/dynamic/ex1.png">
+            <div class="project-box-images-slider" >
+              <% for(let picture of project.pictures){ %>
+              <div class="slider-image-container">
+                <img src="/pictures/dynamic/project/<%=picture%>">
+              </div>
+              <% } %>
             </div>
-
-            <div class="slider-image-container">
-                <img src="/pictures/dynamic/ex2.png">
-            </div>
-
-            <div class="slider-image-container">
-                <img src="/pictures/dynamic/ex4.png">
-            </div>
-
-            <div class="slider-image-container">
-                <img src="/pictures/dynamic/ex1.png">
-            </div>
-
-            <div class="slider-image-container">
-                <img src="/pictures/dynamic/ex2.png">
-            </div>
-
-            <div class="slider-image-container">
-                <img src="/pictures/dynamic/ex4.png">
-            </div>
-          </div>
           </div> 
 
         </div>
-
 
 
         <div class="project-info-container">
@@ -114,7 +78,9 @@
 
         </div>
 
-
+        <% }else{ %>
+          <h1>Não encontrado</h1>
+        <%} %>
     </main>
 
 

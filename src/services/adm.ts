@@ -3,7 +3,7 @@ import * as bcrypt from 'bcrypt';
 import { ok, err, Result } from 'neverthrow'
 import jwt from "jsonwebtoken";
 import { getEnv } from "../constants/envs";
-import { Request, Response } from "express";
+import { query, Request, Response } from "express";
 import path from "path";
 import fs from "fs";
 import { technologyModel } from "../models/technology";
@@ -12,6 +12,7 @@ import { socialsModel } from "../models/socials";
 import { categoryModel } from "../models/category";
 import { projectModel } from "../models/project";
 import { mainProjectModel } from "../models/main-project";
+import mongoose, { Schema } from "mongoose";
 
 let envVars = getEnv();
 
@@ -133,4 +134,88 @@ async function checkCssExistence(page:string, action: string){
 
   return cssExists;
 }
+
+type projectSearch = {
+  project_name: string | undefined, 
+  categories: mongoose.Types.ObjectId[] | undefined,
+  lang: string
+}
+
+export async function getProjects(queryParams: projectSearch){
+  try{ 
+  let searchOptions = {};
+  if(queryParams.categories){
+  searchOptions = {
+      categories: {
+        $all: queryParams.categories
+      }
+    }
+  }
+
+  let projects = await projectModel.find(searchOptions);
+      if (queryParams.project_name) {
+        const regexPattern = new RegExp(
+          queryParams.project_name
+            .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+            .normalize('NFD') //desconsidera acentos
+            .replace(/[\u0300-\u036f]/g, ''), //desconsidera acentos
+          'ui'
+        );
+
+        if(queryParams.lang == "pt-BR"){
+        projects = projects.filter((project) =>
+          regexPattern.test(
+            project.name["pt-BR"].normalize('NFD') //desconsidera acentos
+              .replace(/[\u0300-\u036f]/g, '') //desconsidera acentos
+          )
+        );
+        }else {
+
+        projects = projects.filter((project) =>
+          regexPattern.test(
+            project.name["en-US"].normalize('NFD') //desconsidera acentos
+              .replace(/[\u0300-\u036f]/g, '') //desconsidera acentos
+          )
+        );
+        }
+
+      }
+  return projects; 
+  }catch(e){
+    return null;
+  }
+}
+
+export async function findProject(id: string){
+  try{
+    let project = await projectModel.findById(id);
+    return project;
+  }catch(e){
+    return null;
+  }
+  
+}
+
+export async function getMainProjects(){
+  try{
+    let mainProjects = await mainProjectModel.find({}).populate("project");
+    return mainProjects;
+  }catch(e){
+    return null;
+  }
+}
+
+export async function getCategories(){
+  try{
+    let categories = await categoryModel.find({}).sort("name");
+    return categories;
+  }catch(e){
+    return null;
+  }
+}
+
+
+
+
+
 

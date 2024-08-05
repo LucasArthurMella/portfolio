@@ -21,19 +21,23 @@
     <%- include("partials/fixed-icons") %>
 
     <main id="main-container">
-
       <div id="project-box-title">
         <h1><%= texts.projects.title%></h1> 
       </div>
-
+      
       <div class="justify-center">
-      <form class="form-box project-search-form-box" >
+      <form class="form-box project-search-form-box" method="get" action="/projects" >
         <div class="form-container project-search-form-container">
           <div class="input-group project-search-group">
 
             <div class="input-container">
               <label class="input-label project-search-label" for="project_name"><i class="fa fa-solid fa-map"></i> <%=texts.projects.search.searchProjects%></label> 
-              <input class="input" type="text" name="project_name" id="project_name" required="true" minlength="3" maxlength="100">
+              
+              <input
+                <% if(queryParams.project_name){ %> 
+              value="<%= queryParams.project_name %>"
+                <% } %>
+              class="input" type="text" name="project_name" id="project_name" minlength="3" maxlength="100">
             </div>
 
             <div class="input-container search-form-button-container" style="display: flex; align-items: end;">
@@ -43,20 +47,24 @@
           </div>
           <div class="input-group project-technologies">
               <div class="project-technologies-title"><i class="fa fa-solid fa-microchip"></i> <%=texts.projects.search.selectCategories%></div>
-            <label class="input-label-inline" for="nodejs">
-              <div class="project-search-technology-text">
-              <input type="checkbox" id="nodejs" name="" value="">
-              NodeJS 
-              </div>
-            </label>
 
-            <label class="input-label-inline" for="rust">
+              <% for(let category of categories){%>
+              <label class="input-label-inline" for="<%=category._id%>">
               <div class="project-search-technology-text">
-              <input type="checkbox" id="rust" name="" value="">
-              Rust
+              <input type="checkbox" id="<%=category._id%>" name="categories" value="<%=category._id%>"
+              <% if(queryParams.categories) { %>
+                <% if(queryParams.categories.find(e => e == category._id.toString())){ %>
+                checked="checked" 
+                <% }} %>
+              >
+              <% if (lang=="en-US") {
+                __append(category.name["en-US"]); 
+               } else if(lang=="pt-BR"){
+                __append(category.name["pt-BR"]); 
+               }%>
               </div>
-            </label>
-
+              </label>
+              <%}%>
 
           </div>
         </div>
@@ -68,111 +76,30 @@
 
       <div id="project-box-container-flex">
         <div id="project-box-container">
-
+        <% for(let project of projects) { %>
         <div class="project-box">
           <div class="selectable-text project-box-project-title">
-            <a href="/projects/3213123123?lang=<%=lang%>" >agroloc</a>
+            <a href="/projects/<%=project._id%>?lang=<%=lang%>" >
+              <% if (lang=="en-US") {
+                __append(project.name["en-US"]); 
+               } else if(lang=="pt-BR"){
+                __append(project.name["pt-BR"]); 
+               }%>
+            </a>
           </div>
           <div class="project-box-images" >
-            <div>
-              <a data-fancybox href="/pictures/dynamic/ex1.png">
-                <img src="/pictures/dynamic/ex1.png">
-              </a>
-            </div>
 
+            <% for(let picture of project.pictures){ %>
             <div>
-              <a data-fancybox href="/pictures/dynamic/ex2.png">
-                <img src="/pictures/dynamic/ex2.png">
+              <a data-fancybox href="/pictures/dynamic/project/<%=picture%>">
+                <img src="/pictures/dynamic/project/<%=picture%>">
               </a>
             </div>
-
-            <div>
-              <a data-fancybox href="/pictures/dynamic/ex3.png">
-                <img src="/pictures/dynamic/ex3.png">
-              </a>
-            </div>
+            <% } %>
           </div>
         </div> 
+        <% } %>
 
-
-        <div class="project-box">
-          <div class="selectable-text project-box-project-title">
-            <a href="/projects/3213123123?lang=<%=lang%>" >projeto 2</a>
-          </div>
-          <div class="project-box-images">
-            <div>
-              <a data-fancybox href="/pictures/dynamic/ex1.png">
-                <img src="/pictures/dynamic/ex1.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="/pictures/dynamic/ex2.png">
-                <img src="/pictures/dynamic/ex2.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="/pictures/dynamic/ex3.png">
-                <img src="/pictures/dynamic/ex3.png">
-              </a>
-            </div>
-          </div>
-        </div> 
-
-
-        <div class="project-box">
-          <div class="selectable-text project-box-project-title">
-            <a href="/projects/3213123123?lang=<%=lang%>" >projeto 3</a>
-          </div>
-          <div class="project-box-images">
-            <div>
-              <a data-fancybox href="/pictures/dynamic/ex1.png">
-                <img src="/pictures/dynamic/ex1.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="/pictures/dynamic/ex2.png">
-                <img src="/pictures/dynamic/ex2.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="/pictures/dynamic/ex3.png">
-                <img src="/pictures/dynamic/ex3.png">
-              </a>
-            </div>
-          </div>
-        </div> 
-
-
-        <div class="project-box">
-          <div class="selectable-text project-box-project-title">
-            <a href="/projects/3213123123?lang=<%=lang%>" >projeto 4</a>
-          </div>
-          <div class="project-box-images">
-            <div>
-              <a data-fancybox href="/pictures/dynamic/ex1.png">
-                <img src="/pictures/dynamic/ex1.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="/pictures/dynamic/ex2.png">
-                <img src="/pictures/dynamic/ex2.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="/pictures/dynamic/ex3.png">
-                <img src="/pictures/dynamic/ex3.png">
-              </a>
-            </div>
-
-          </div>
-        </div> 
-        
         </div> 
       </div>
 

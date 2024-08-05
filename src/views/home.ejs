@@ -86,108 +86,31 @@
       <div id="project-box-container-flex">
         <div id="project-box-container">
 
+
+
+        <% for(let mainProject of mainProjects){ %>
         <div class="project-box">
           <div class="selectable-text project-box-project-title">
-            <a href="" >agroloc</a>
+            <a href="/projects/<%=mainProject.project._id%>?lang=<%=lang%>" >
+              <% if (lang=="en-US") {
+                __append(mainProject.project.name["en-US"]); 
+               } else if(lang=="pt-BR"){
+                __append(mainProject.project.name["pt-BR"]); 
+               }%>
+            </a>
           </div>
           <div class="project-box-images" >
+            <% for(let picture of mainProject.project.pictures) { %>
             <div>
-              <a data-fancybox href="pictures/dynamic/ex1.png">
-                <img src="pictures/dynamic/ex1.png">
+              <a data-fancybox href="/pictures/dynamic/project/<%=picture%>">
+                <img src="/pictures/dynamic/project/<%=picture%>">
               </a>
             </div>
-
-            <div>
-              <a data-fancybox href="pictures/dynamic/ex2.png">
-                <img src="pictures/dynamic/ex2.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="pictures/dynamic/ex3.png">
-                <img src="pictures/dynamic/ex3.png">
-              </a>
-            </div>
+            <% } %>
           </div>
         </div> 
+        <% } %>
 
-
-        <div class="project-box">
-          <div class="selectable-text project-box-project-title">
-            <a href="" >projeto 2</a>
-          </div>
-          <div class="project-box-images">
-            <div>
-              <a data-fancybox href="pictures/dynamic/ex1.png">
-                <img src="pictures/dynamic/ex1.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="pictures/dynamic/ex2.png">
-                <img src="pictures/dynamic/ex2.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="pictures/dynamic/ex3.png">
-                <img src="pictures/dynamic/ex3.png">
-              </a>
-            </div>
-          </div>
-        </div> 
-
-
-        <div class="project-box">
-          <div class="selectable-text project-box-project-title">
-            <a href="" >projeto 3</a>
-          </div>
-          <div class="project-box-images">
-            <div>
-              <a data-fancybox href="pictures/dynamic/ex1.png">
-                <img src="pictures/dynamic/ex1.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="pictures/dynamic/ex2.png">
-                <img src="pictures/dynamic/ex2.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="pictures/dynamic/ex3.png">
-                <img src="pictures/dynamic/ex3.png">
-              </a>
-            </div>
-          </div>
-        </div> 
-
-
-        <div class="project-box">
-          <div class="selectable-text project-box-project-title">
-            <a href="" >projeto 4</a>
-          </div>
-          <div class="project-box-images">
-            <div>
-              <a data-fancybox href="pictures/dynamic/ex1.png">
-                <img src="pictures/dynamic/ex1.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="pictures/dynamic/ex2.png">
-                <img src="pictures/dynamic/ex2.png">
-              </a>
-            </div>
-
-            <div>
-              <a data-fancybox href="pictures/dynamic/ex3.png">
-                <img src="pictures/dynamic/ex3.png">
-              </a>
-            </div>
-          </div>
-        </div> 
         </div> 
       </div>
 

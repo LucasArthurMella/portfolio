@@ -15,7 +15,8 @@ $(function(){
   slidesToScroll: 1,
   arrows: false,
   fade: true,
-  asNavFor: '.project-box-images-slider'
+  asNavFor: '.project-box-images-slider',
+  adaptiveHeight: true
   });
 });
 

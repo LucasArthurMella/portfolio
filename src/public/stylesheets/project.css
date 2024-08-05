@@ -44,16 +44,19 @@ body {
   flex-flow: column;
   max-width: 100% !important;
   min-width: 100% !important;
+
 }
 
 .main-image-container {
   max-width: 90% !important;
   min-width: 90% !important;
+
 }
 
 .main-slider-container{
   max-width: 80% !important;
   min-width: 80% !important;
+
 }
 
 .project-box-images {
@@ -66,6 +69,7 @@ body {
   margin-top: 2%;
   max-width: 100% !important;
   min-width: 100% !important;
+
 }
 
 .slider-image-container {
@@ -77,6 +81,8 @@ body {
   max-width: 100% !important;
   min-width: 100% !important;
   border-radius: 10px;
+
+  max-height: 500px;
 }
 
 
