@@ -188,7 +188,7 @@ export async function getProjects(queryParams: projectSearch){
 
 export async function findProject(id: string){
   try{
-    let project = await projectModel.findById(id);
+    let project = await projectModel.findById(id).populate("categories");
     return project;
   }catch(e){
     return null;

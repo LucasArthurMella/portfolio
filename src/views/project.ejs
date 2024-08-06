@@ -47,29 +47,58 @@
             </div>
           </div> 
 
+          <div class="category-container">
+            <% for(let category of project.categories){ %>
+            <div class="category-box">
+              <% if(lang=="pt-BR") { %>
+              <%= category.name["pt-BR"] %>
+              <% }else if(lang=="en-US"){ %>
+              <%= category.name["en-US"] %>
+              <% } %>
+            </div>
+            <% } %>
+          </div>
+
         </div>
 
 
         <div class="project-info-container">
           <div class="project-info-title">
-            <h1>Agroloc</h1>  
+            <h1>
+          <% if(lang=="pt-BR") { %>
+          <%= project.name["pt-BR"] %>
+          <% }else if(lang=="en-US"){ %>
+          <%= project.name["en-US"] %>
+          <% } %>
+            </h1>  
           </div>
-          <p class="project-info-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          <p class="project-info-description">
+          <% if(lang=="pt-BR") { %>
+          <%= project.description["pt-BR"] %>
+          <% }else if(lang=="en-US"){ %>
+          <%= project.description["en-US"] %>
+          <% } %>
+          </p>
 
         <div class="buttons-group">
             
+          <% if(project.link){ %>
           <div class="button-container">
-            <a class="main-button"><i class="fa fa-solid fa-link"></i> Link</a>
+            <a href="<%=project.link%>" class="main-button"><i class="fa fa-solid fa-link"></i> Link</a>
           </div>
+          <% } %>
 
+          <% if(project.demonstrative_link){ %>
           <div class="button-container">
-            <a class="main-button"><i class="fa fa-solid fa-paperclip"></i> <%= texts.projects.info.demonstrativeLink%></a>
+            <a href="<%=project.demonstrative_link%>" class="main-button"><i class="fa fa-solid fa-paperclip"></i> <%= texts.projects.info.demonstrativeLink%></a>
           </div>
+          <% } %>
 
+          <% if(project.repository){ %>
           <div class="button-container"> 
-            <a class="main-button"><i class="fa fa-solid fa-github"></i> <%= texts.projects.info.repository%></a>
+            <a href="<%=project.repository%>" class="main-button"><i class="fa fa-solid fa-github"></i> <%= texts.projects.info.repository%></a>
           </div>
-
+          <% } %>
 
         </div>
 
