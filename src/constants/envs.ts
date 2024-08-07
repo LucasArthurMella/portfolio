@@ -9,5 +9,17 @@ export const getEnv = () => {
       port: parseInt(process.env.PORT!)
     },
     mongoUri: process.env.MONGO_URI!,
-    jwtSecret: process.env.JWT_SECRET!
+    jwtSecret: process.env.JWT_SECRET!,
+    mailJet: {
+      emailInfo: {
+        fromEmail: process.env.FROM_EMAIL_EMAIL!,
+        toEmail: process.env.TO_EMAIL_EMAIL!,
+        toName: process.env.TO_EMAIL_NAME!,
+      },
+      mailJetInfo: {
+        apiUrl: process.env.MAILJET_API_URL!,
+        publicKey: process.env.MAILJET_PUBLIC_KEY!,
+        privateKey: process.env.MAILJET_PRIVATE_KEY! 
+      }
+    }
   }}
